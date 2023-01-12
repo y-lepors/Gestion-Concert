@@ -1,0 +1,28 @@
+backend/projetSIBackend/target/
+!backend/projetSIBackend/.mvn/wrapper/maven-wrapper.jar
+!backend/projetSIBackend/**/src/main/**/target/
+!backend/projetSIBackend/**/src/test/**/target/
+
+### IntelliJ IDEA ###
+backend/projetSIBackend/.idea/modules.xml
+backend/projetSIBackend/.idea/jarRepositories.xml
+backend/projetSIBackend/.idea/compiler.xml
+backend/projetSIBackend/.idea/libraries/
+backend/projetSIBackend/*.iws
+backend/projetSIBackend/*.iml
+backend/projetSIBackend/*.ipr
+
+### Eclipse ###
+backend/projetSIBackend/.apt_generated
+backend/projetSIBackend/.classpath
+backend/projetSIBackend/.factorypath
+backend/projetSIBackend/.project
+backend/projetSIBackend/.settings
+backend/projetSIBackend/.springBeans
+backend/projetSIBackend/.sts4-cache
+
+### VS Code ###
+backend/projetSIBackend/.vscode/
+
+### Mac OS ###
+backend/projetSIBackend/.DS_Store
