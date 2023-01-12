@@ -1,38 +1,28 @@
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+backend/projetSIBackend/target/
+!backend/projetSIBackend/.mvn/wrapper/maven-wrapper.jar
+!backend/projetSIBackend/**/src/main/**/target/
+!backend/projetSIBackend/**/src/test/**/target/
 
 ### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
-*.iws
-*.iml
-*.ipr
+backend/projetSIBackend/.idea/modules.xml
+backend/projetSIBackend/.idea/jarRepositories.xml
+backend/projetSIBackend/.idea/compiler.xml
+backend/projetSIBackend/.idea/libraries/
+backend/projetSIBackend/*.iws
+backend/projetSIBackend/*.iml
+backend/projetSIBackend/*.ipr
 
 ### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
+backend/projetSIBackend/.apt_generated
+backend/projetSIBackend/.classpath
+backend/projetSIBackend/.factorypath
+backend/projetSIBackend/.project
+backend/projetSIBackend/.settings
+backend/projetSIBackend/.springBeans
+backend/projetSIBackend/.sts4-cache
 
 ### VS Code ###
-.vscode/
+backend/projetSIBackend/.vscode/
 
 ### Mac OS ###
-.DS_Store
+backend/projetSIBackend/.DS_Store
