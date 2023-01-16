@@ -26,3 +26,30 @@ backend/projetSIBackend/.vscode/
 
 ### Mac OS ###
 backend/projetSIBackend/.DS_Store
+
+frontend/projetfrontend/logs
+frontend/projetfrontend/*.log
+frontend/projetfrontend/npm-debug.log*
+frontend/projetfrontend/yarn-debug.log*
+frontend/projetfrontend/yarn-error.log*
+frontend/projetfrontend/pnpm-debug.log*
+frontend/projetfrontend/lerna-debug.log*
+
+frontend/projetfrontend/node_modules
+frontend/projetfrontend/.DS_Store
+frontend/projetfrontend/dist
+frontend/projetfrontend/dist-ssr
+frontend/projetfrontend/coverage
+frontend/projetfrontend/*.local
+
+frontend/projetfrontend/cypress/videos/
+frontend/projetfrontend/cypress/screenshots/
+
+frontend/projetfrontend/.vscode/*
+frontend/projetfrontend/!.vscode/extensions.json
+frontend/projetfrontend/.idea
+frontend/projetfrontend/*.suo
+frontend/projetfrontend/*.ntvs*
+frontend/projetfrontend/*.njsproj
+frontend/projetfrontend/*.sln
+frontend/projetfrontend/*.sw?
