@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS Gestionnaire;
 DROP TABLE IF EXISTS Artiste;
 
 CREATE TABLE Artiste (
-    idArtiste INT NOT NULL PRIMARY KEY,
+    idArtiste INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nom VARCHAR(50),
     prenom VARCHAR(50),
     pseudo VARCHAR(50),
@@ -16,14 +16,14 @@ CREATE TABLE Artiste (
 );
 
 CREATE TABLE Gestionnaire (
-    idGestionnaire INT NOT NULL PRIMARY KEY,
+    idGestionnaire INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nom VARCHAR(50),
     president VARCHAR(50),
     typeGestionnaire ENUM('personne', 'association') 
 );
 
 CREATE TABLE Salle (
-    idSalle INT NOT NULL PRIMARY KEY,
+    idSalle INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nom VARCHAR(50),
     adresse VARCHAR(50),
     capacite INT,
@@ -31,10 +31,8 @@ CREATE TABLE Salle (
     CONSTRAINT fk_SalleGestionnaire FOREIGN KEY(idGestionnaire) REFERENCES Gestionnaire(idGestionnaire)
 );
 
-
-
 CREATE TABLE Groupe (
-    idGroupe INT NOT NULL PRIMARY KEY,
+    idGroupe INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nom VARCHAR(50)
 );
 
@@ -47,14 +45,14 @@ CREATE TABLE Groupe_Has_Artiste (
 );
 
 CREATE TABLE Soiree (
-    idSoiree INT NOT NULL PRIMARY KEY,
+    idSoiree INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nom VARCHAR(50),
     idSalle INT NOT NULL,
     CONSTRAINT fkSoireeSalle FOREIGN KEY(idSalle) REFERENCES Salle(idSalle)
 );
 
 CREATE TABLE Concert (
-    idConcert INT NOT NULL PRIMARY KEY,
+    idConcert INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     dateConcert DATETIME,
     duree INT,
     idArtiste INT,
