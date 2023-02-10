@@ -12,13 +12,13 @@ public class DAOGestionnaire extends DAO<Gestionnaire> {
 	
 	public DAOGestionnaire() throws DAOException {
 		super();
-		entityManager = Persistence.createEntityManagerFactory("SportsPU").createEntityManager();
+		entityManager = Persistence.createEntityManagerFactory("ConcertsPU").createEntityManager();
 	}
 	
 	@Override
 	public Gestionnaire find(int id) throws DAOException {
 		Query query = entityManager.createNamedQuery("Gestionnaire.findByIdGestionnaire");
-		query.setParameter("idGestionnaire",(short)id);
+		query.setParameter("idGestionnaire", id);
 		return (Gestionnaire) query.getSingleResult();
 	}
 

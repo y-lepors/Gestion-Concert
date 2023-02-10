@@ -15,13 +15,13 @@ public class DAOArtiste extends DAO<Artiste> {
 
 	public DAOArtiste() throws DAOException {
 		super();
-		entityManager = Persistence.createEntityManagerFactory("SportsPU").createEntityManager();
+		entityManager = Persistence.createEntityManagerFactory("ConcertsPU").createEntityManager();
 	}
 
 	@Override
 	public Artiste find(int id) throws DAOException {
 		Query query = entityManager.createNamedQuery("Artiste.findByIdArtiste");
-		query.setParameter("idArtiste",(short)id);
+		query.setParameter("idArtiste", id);
 		return (Artiste) query.getSingleResult();
 	}
 

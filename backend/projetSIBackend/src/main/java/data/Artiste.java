@@ -60,8 +60,7 @@ public class Artiste implements Serializable {
     @OneToMany(mappedBy = "idArtiste")
     private Set<Concert> concertSet;
 
-    public Artiste() {
-    }
+    public Artiste() {}
 
     public Artiste(Integer idArtiste) {
         this.idArtiste = idArtiste;

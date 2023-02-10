@@ -15,13 +15,13 @@ public class DAOConcert extends DAO<Concert> {
 	
 	public DAOConcert() throws DAOException {
 		super();
-		entityManager = Persistence.createEntityManagerFactory("SportsPU").createEntityManager();
+		entityManager = Persistence.createEntityManagerFactory("ConcertsPU").createEntityManager();
 	}
 
 	@Override
 	public Concert find(int id) throws DAOException {
 		Query query = entityManager.createNamedQuery("Concert.findByIdConcert");
-		query.setParameter("idConcert",(short)id);
+		query.setParameter("idConcert", id);
 		return (Concert) query.getSingleResult();
 	}
 

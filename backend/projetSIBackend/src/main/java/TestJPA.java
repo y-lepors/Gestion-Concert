@@ -1,38 +1,49 @@
+import DAO.DAO;
+import DAO.DAOFactory;
 import data.Artiste;
-import data.Concert;
-
-import javax.persistence.*;
 
 public class TestJPA {
 
-    public static void main(String argv[]) throws Exception {
+	public static void aff(Artiste a) {
+		System.out.println(a.getPrenom() + ' ' + a.getNom() + " aka " + a.getPseudo() + " (" + a.getAge() + " ans) " + " de " + a.getVille());
+	}
 
-        // charge le gestionnaire d'entités lié à l'unité de persistance "SportsPU"
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ConcertsPU");
-        EntityManager em = emf.createEntityManager();
-        System.out.println("PU chargée");
+	public static void main(String[] argv) throws Exception {
+		try {
+			DAOFactory factory = new DAOFactory();
+			DAO<Artiste> daoArtiste = factory.getDAOArtiste();
 
-        // récupère le sport d'identifiant 1, affiche son intitulé et ses disciplines
+			// create
+			System.out.println("---create---");
+			Artiste a1 = new Artiste();
+			a1.setNom("MICHEL");
+			a1.setPrenom("David");
+			a1.setPseudo("Bebou");
+			a1.setVille("Toulouse");
+			a1.setAge(67);
+			aff(a1);
+			daoArtiste.create(a1);
 
-        /*Sport sport = em.find(Sport.class, cle);
-        System.out.println("Le sport " + cle + " est " + sport.getIntitule());
-        for (Discipline disc : sport.getDisciplineSet())
-            System.out.println(" -> " + disc.getIntitule());*/
+			// recup id objet
+			int aId = a1.getIdArtiste();
 
-        int cle = 1;
-        Artiste artiste = em.find(Artiste.class, cle);
-        System.out.println("L'artiste " + cle + " est " + artiste.getNom());
-        for (Concert concert : artiste.getConcertSet())
-            System.out.println(" -> " + concert.getDateConcert());
+			// find
+			System.out.println("---find id="+aId+"---");
+			aff(daoArtiste.find(aId));
 
+			// update
+			System.out.println("---update pseudo=Captain Planet---");
+			a1.setPseudo("Captain Planet");
+			daoArtiste.update(a1);
+			aff(daoArtiste.find(aId));
 
-        int cleConcert = 1;
-        Concert concert = em.find(Concert.class, cleConcert);
-        System.out.println("Le concert " + cleConcert + " est " + concert.getDateConcert());
+			// delete
+			System.out.println("---delete---");
+			daoArtiste.delete(a1);
 
-
-
-
-
-    }
+		} catch (Exception e) {
+			System.err.println(e);
+			e.printStackTrace();
+		}
+	}
 }
