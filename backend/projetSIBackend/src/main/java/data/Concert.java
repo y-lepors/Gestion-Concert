@@ -37,7 +37,7 @@ public class Concert implements Serializable {
     @Column(name = "idSoiree")
     private Integer idSoiree;
 
-    @OneToMany(mappedBy = "idConcert")
+    @OneToMany(mappedBy = "idArtiste")
     private Set<Artiste> artisteSet;
 
     public Set<Artiste> getArtisteSet() {

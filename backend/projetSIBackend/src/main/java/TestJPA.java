@@ -28,5 +28,13 @@ public class TestJPA {
             System.out.println(" -> " + concert.getDateConcert());
 
 
+        int cleConcert = 1;
+        Concert concert = em.find(Concert.class, cleConcert);
+        System.out.println("Le concert " + cleConcert + " est " + concert.getDateConcert());
+        for (Artiste artiste1 : concert.getArtisteSet())
+           System.out.println(" -> " + artiste1.getNom());
+
+
+
     }
 }
