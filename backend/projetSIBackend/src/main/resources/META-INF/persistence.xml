@@ -6,7 +6,6 @@
     <class>data.Concert</class>
     <class>data.Gestionnaire</class>
     <class>data.Groupe</class>
-    <class>data.GroupeHasArtiste</class>
     <class>data.Salle</class>
     <class>data.Soiree</class>
     <properties>

@@ -1,7 +1,5 @@
 import data.Artiste;
 import data.Concert;
-import data.Sport;
-import data.Discipline;
 
 import javax.persistence.*;
 
