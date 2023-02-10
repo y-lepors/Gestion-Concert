@@ -1,139 +1,148 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package data;
 
-import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
+import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+/**
+ *
+ * @author yanis.lepors
+ */
 @Entity
 @Table(name = "Concert")
-@NamedQueries( {
-    @NamedQuery(name = "Concert.findAll", query = "select o from Concert o"),
-    @NamedQuery(name = "Concert.findByIdConcert", query = "select o from Concert o where o.idConcert = :idConcert"),
-    @NamedQuery(name = "Concert.findByIdArtiste", query = "select o from Concert o where o.idArtiste = :idArtiste"),
-    @NamedQuery(name = "Concert.findByIdGroupe", query = "select o from Concert o where o.idGroupe = :idGroupe"),
-    @NamedQuery(name = "Concert.findByIdSalle", query = "select o from Concert o where o.idSalle = :idSalle"),
-    @NamedQuery(name = "Concert.findByIdSoiree", query = "select o from Concert o where o.idSoiree = :idSoiree")
-})
+@NamedQueries({
+    @NamedQuery(name = "Concert.findAll", query = "SELECT c FROM Concert c"),
+    @NamedQuery(name = "Concert.findByIdConcert", query = "SELECT c FROM Concert c WHERE c.idConcert = :idConcert"),
+    @NamedQuery(name = "Concert.findByDateConcert", query = "SELECT c FROM Concert c WHERE c.dateConcert = :dateConcert"),
+    @NamedQuery(name = "Concert.findByDuree", query = "SELECT c FROM Concert c WHERE c.duree = :duree")})
 public class Concert implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
     @Column(name = "idConcert")
     private Integer idConcert;
-
     @Column(name = "dateConcert")
-    private java.sql.Timestamp dateConcert;
-
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateConcert;
     @Column(name = "duree")
     private Integer duree;
+    @JoinColumn(name = "idArtiste", referencedColumnName = "idArtiste")
+    @ManyToOne
+    private Artiste idArtiste;
+    @JoinColumn(name = "idGroupe", referencedColumnName = "idGroupe")
+    @ManyToOne
+    private Groupe idGroupe;
+    @JoinColumn(name = "idSalle", referencedColumnName = "idSalle")
+    @ManyToOne(optional = false)
+    private Salle idSalle;
+    @JoinColumn(name = "idSoiree", referencedColumnName = "idSoiree")
+    @ManyToOne(optional = false)
+    private Soiree idSoiree;
 
-    @Column(name = "idArtiste")
-    private Integer idArtiste;
-
-    @Column(name = "idGroupe")
-    private Integer idGroupe;
-
-    @Column(name = "idSalle")
-    private Integer idSalle;
-
-    @Column(name = "idSoiree")
-    private Integer idSoiree;
-
-    @OneToMany(mappedBy = "idArtiste")
-    private Set<Artiste> artisteSet;
-
-    public Set<Artiste> getArtisteSet() {
-        return artisteSet;
+    public Concert() {
     }
 
-    public void setArtisteSet(Set<Artiste> artisteSet) {
-        this.artisteSet = artisteSet;
+    public Concert(Integer idConcert) {
+        this.idConcert = idConcert;
     }
 
     public Integer getIdConcert() {
-        return this.idConcert;
+        return idConcert;
     }
 
     public void setIdConcert(Integer idConcert) {
         this.idConcert = idConcert;
     }
 
-    public java.sql.Timestamp getDateConcert() {
-        return this.dateConcert;
+    public Date getDateConcert() {
+        return dateConcert;
     }
 
-    public void setDateConcert(java.sql.Timestamp dateConcert) {
+    public void setDateConcert(Date dateConcert) {
         this.dateConcert = dateConcert;
     }
 
     public Integer getDuree() {
-        return this.duree;
+        return duree;
     }
 
     public void setDuree(Integer duree) {
         this.duree = duree;
     }
 
-    public Integer getIdArtiste() {
-        return this.idArtiste;
+    public Artiste getIdArtiste() {
+        return idArtiste;
     }
 
-    public void setIdArtiste(Integer idArtiste) {
+    public void setIdArtiste(Artiste idArtiste) {
         this.idArtiste = idArtiste;
     }
 
-    public Integer getIdGroupe() {
-        return this.idGroupe;
+    public Groupe getIdGroupe() {
+        return idGroupe;
     }
 
-    public void setIdGroupe(Integer idGroupe) {
+    public void setIdGroupe(Groupe idGroupe) {
         this.idGroupe = idGroupe;
     }
 
-    public Integer getIdSalle() {
-        return this.idSalle;
+    public Salle getIdSalle() {
+        return idSalle;
     }
 
-    public void setIdSalle(Integer idSalle) {
+    public void setIdSalle(Salle idSalle) {
         this.idSalle = idSalle;
     }
 
-    public Integer getIdSoiree() {
-        return this.idSoiree;
+    public Soiree getIdSoiree() {
+        return idSoiree;
     }
 
-    public void setIdSoiree(Integer idSoiree) {
+    public void setIdSoiree(Soiree idSoiree) {
         this.idSoiree = idSoiree;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
+    public int hashCode() {
+        int hash = 0;
+        hash += (idConcert != null ? idConcert.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Concert)) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Concert other = (Concert) obj;
-        if (this.idConcert != other.idConcert && (this.idConcert == null || !this.idConcert.equals(other.idConcert))) {
-            return false;
-        }
-        if (this.dateConcert != other.dateConcert && (this.dateConcert == null || !this.dateConcert.equals(other.dateConcert))) {
-            return false;
-        }
-        if (this.duree != other.duree && (this.duree == null || !this.duree.equals(other.duree))) {
-            return false;
-        }
-        if (this.idArtiste != other.idArtiste && (this.idArtiste == null || !this.idArtiste.equals(other.idArtiste))) {
-            return false;
-        }
-        if (this.idGroupe != other.idGroupe && (this.idGroupe == null || !this.idGroupe.equals(other.idGroupe))) {
-            return false;
-        }
-        if (this.idSalle != other.idSalle && (this.idSalle == null || !this.idSalle.equals(other.idSalle))) {
-            return false;
-        }
-        if (this.idSoiree != other.idSoiree && (this.idSoiree == null || !this.idSoiree.equals(other.idSoiree))) {
+        Concert other = (Concert) object;
+        if ((this.idConcert == null && other.idConcert != null) || (this.idConcert != null && !this.idConcert.equals(other.idConcert))) {
             return false;
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "data.Concert[ idConcert=" + idConcert + " ]";
+    }
+    
 }
