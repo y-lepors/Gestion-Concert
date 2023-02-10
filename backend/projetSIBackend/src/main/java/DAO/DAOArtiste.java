@@ -6,6 +6,9 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+/**
+ * DAO pour la table Artiste avec implémentation en JPA
+ */
 public class DAOArtiste extends DAO<Artiste> {
 
 	private final EntityManager entityManager;

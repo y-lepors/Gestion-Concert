@@ -6,6 +6,9 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+/**
+ * DAO pour la table concert avec implémentation en JPA
+ */
 public class DAOConcert extends DAO<Concert> {
 
 	private final EntityManager entityManager;
