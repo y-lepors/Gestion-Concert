@@ -8,6 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DAOSoiree extends DAO<Soiree> {
 
@@ -88,14 +89,19 @@ public class DAOSoiree extends DAO<Soiree> {
 	 * @return ArrayList<Soiree> liste de toutes les soirées
 	 * @throws DAOException si la requête échoue
 	 */
-	public ArrayList<Soiree> findAll() throws DAOException {
+	public List<Soiree> findAll() throws DAOException {
 		Query query = entityManager.createNamedQuery("Soiree.findAll");
-		return (ArrayList<Soiree>) query.getResultList();
+		return (List<Soiree>) query.getResultList();
 	}
 
-	public ArrayList<Artiste> selectArtiste(int idSoiree) throws DAOException {
-		Query query = entityManager.createNamedQuery("Soiree.selectArtiste");
-		query.setParameter("idSoiree", idSoiree);
-		return (ArrayList<Artiste>) query.getResultList();
+	/**
+	 * Retourne la liste des artistes d'une soirée
+	 * @param idSoiree identifiant de la soirée
+	 * @return ArrayList<Artiste> liste des artistes de la soirée
+	 * @throws DAOException si la requête échoue
+	 */
+	public List<Artiste> selectArtisteBySoiree(int idSoiree) throws DAOException {
+		Query query = entityManager.createNamedQuery("SELECT * From Artiste WHERE Artiste.idArtiste = (SELECT Concert.idArtiste FROM Soiree, Concert WHERE Concert.idSoiree = Soiree.idSoiree AND idSoiree = "+ idSoiree+")");
+		return (List<Artiste>) query.getResultList();
 	}
 }

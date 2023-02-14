@@ -29,8 +29,8 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(name = "Soiree.findAll", query = "SELECT s FROM Soiree s"),
     @NamedQuery(name = "Soiree.findByIdSoiree", query = "SELECT s FROM Soiree s WHERE s.idSoiree = :idSoiree"),
-    @NamedQuery(name = "Soiree.findByNom", query = "SELECT s FROM Soiree s WHERE s.nom = :nom"),
-    @NamedQuery(name = "Soiree.findArtistes", query = "")})
+    @NamedQuery(name = "Soiree.findByNom", query = "SELECT s FROM Soiree s WHERE s.nom = :nom")
+    })
 public class Soiree implements Serializable {
 
     private static final long serialVersionUID = 1L;

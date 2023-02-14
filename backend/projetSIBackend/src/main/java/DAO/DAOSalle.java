@@ -7,6 +7,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DAOSalle extends DAO<Salle> {
 
@@ -83,11 +84,11 @@ public class DAOSalle extends DAO<Salle> {
 
 	/**
 	 * Retourne la liste de toutes les salles
-	 * @return ArrayList<Salle> liste de toutes les salles
+	 * @return List<Salle> liste de toutes les salles
 	 * @throws DAOException si la requête ne peut pas être exécutée
 	 */
-	public ArrayList<Salle> findAll() throws DAOException {
+	public List<Salle> findAll() throws DAOException {
 		Query query = entityManager.createNamedQuery("Salle.findAll");
-		return (ArrayList<Salle>) query.getResultList();
+		return (List<Salle>) query.getResultList();
 	}
 }

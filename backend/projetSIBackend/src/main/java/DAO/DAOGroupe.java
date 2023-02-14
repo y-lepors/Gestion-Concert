@@ -7,6 +7,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * DAO pour la classe Groupe avec implémentation en JPA
@@ -86,11 +87,11 @@ public class DAOGroupe extends DAO<Groupe>{
 
     /**
      * Retourne la liste de tous les groupes
-     * @return ArrayList<Groupe> liste de tous les groupes
+     * @return List<Groupe> liste de tous les groupes
      * @throws DAOException si la requête échoue
      */
-    public ArrayList<Groupe> findAll() throws DAOException {
+    public List<Groupe> findAll() throws DAOException {
         Query query = entityManager.createNamedQuery("Groupe.findAll");
-        return (ArrayList<Groupe>) query.getResultList();
+        return (List<Groupe>) query.getResultList();
     }
 }

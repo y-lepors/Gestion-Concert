@@ -19,6 +19,12 @@ public class DAOConcert extends DAO<Concert> {
 		entityManager = Persistence.createEntityManagerFactory("ConcertsPU").createEntityManager();
 	}
 
+	/**
+	 * Retourne un concert à partir de son identifiant
+	 * @param id identifiant de l'objet
+	 * @return Concert l'objet trouvé
+	 * @throws DAOException si la requête échoue
+	 */
 	@Override
 	public Concert find(int id) throws DAOException {
 		Query query = entityManager.createNamedQuery("Concert.findByIdConcert");
@@ -26,6 +32,11 @@ public class DAOConcert extends DAO<Concert> {
 		return (Concert) query.getSingleResult();
 	}
 
+	/**
+	 * Crée un nouveau concert dans la base de données
+	 * @param data l'objet à rendre persistant
+	 * @throws DAOException si la requête échoue
+	 */
 	@Override
 	public void create(Concert data) throws DAOException {
 		EntityTransaction trans = entityManager.getTransaction();
@@ -38,6 +49,11 @@ public class DAOConcert extends DAO<Concert> {
 		}
 	}
 
+	/**
+	 * Met à jour un concert dans la base de données
+	 * @param data l'objet modifié dont le contenu est à mettre à jour
+	 * @throws DAOException si la requête échoue
+	 */
 	@Override
 	public void update(Concert data) throws DAOException {
 		EntityTransaction trans = entityManager.getTransaction();
@@ -50,6 +66,11 @@ public class DAOConcert extends DAO<Concert> {
 		}
 	}
 
+	/**
+	 * Supprime un concert de la base de données
+	 * @param data l'objet à supprimer
+	 * @throws DAOException si la requête échoue
+	 */
 	@Override
 	public void delete(Concert data) throws DAOException {
 		EntityTransaction trans = entityManager.getTransaction();
