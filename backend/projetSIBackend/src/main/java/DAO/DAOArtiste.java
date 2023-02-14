@@ -1,6 +1,7 @@
 package DAO;
 
 import data.Artiste;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;

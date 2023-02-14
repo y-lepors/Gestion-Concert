@@ -1,6 +1,7 @@
 package DAO;
 
 import data.Concert;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
@@ -12,7 +13,7 @@ import javax.persistence.Query;
 public class DAOConcert extends DAO<Concert> {
 
 	private final EntityManager entityManager;
-	
+
 	public DAOConcert() throws DAOException {
 		super();
 		entityManager = Persistence.createEntityManagerFactory("ConcertsPU").createEntityManager();
