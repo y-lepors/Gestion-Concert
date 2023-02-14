@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import java.util.List;
 
 /**
  * DAO pour la table Artiste avec implémentation en JPA
@@ -81,5 +82,15 @@ public class DAOArtiste extends DAO<Artiste> {
 		} catch (Exception e) {
 			if (trans != null) trans.rollback();
 		}
+	}
+
+	/**
+	 * Retourne la liste de tous les artistes
+	 * @return List<Artiste> la liste des artistes
+	 * @throws DAOException si la requête échoue
+	 */
+	public List<Artiste> findAll() throws DAOException {
+		Query query = entityManager.createNamedQuery("Artiste.findAll");
+		return query.getResultList();
 	}
 }

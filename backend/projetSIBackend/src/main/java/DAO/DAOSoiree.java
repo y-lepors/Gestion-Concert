@@ -1,6 +1,7 @@
 package DAO;
 
 import data.Artiste;
+import data.Concert;
 import data.Soiree;
 
 import javax.persistence.EntityManager;
@@ -101,7 +102,19 @@ public class DAOSoiree extends DAO<Soiree> {
 	 * @throws DAOException si la requête échoue
 	 */
 	public List<Artiste> selectArtisteBySoiree(int idSoiree) throws DAOException {
-		Query query = entityManager.createNamedQuery("SELECT * From Artiste WHERE Artiste.idArtiste = (SELECT Concert.idArtiste FROM Soiree, Concert WHERE Concert.idSoiree = Soiree.idSoiree AND idSoiree = "+ idSoiree+")");
-		return (List<Artiste>) query.getResultList();
+
+		/*Soiree soiree = find(idSoiree);
+		if(soiree != null) {
+			List<Artiste> ret = new ArrayList<>();
+
+			for(Concert concert : soiree.getConcertSet()){
+				ret.add(concert.getIdArtiste());
+			}
+
+			return ret;
+		} else {
+			return null;
+		}*/
+		return null;
 	}
 }

@@ -4,6 +4,7 @@ import data.Artiste;
 import data.Groupe;
 import DAO.DAOGroupe;
 import DAO.DAOArtiste;
+import DAO.DAOSoiree;
 
 public class TestJPA {
 
@@ -65,6 +66,14 @@ public class TestJPA {
 			System.out.println("---findAll Groupe---");
 			for (Groupe g : daoGroupe.findAll()) {
 				System.out.println(g.getNom());
+			}
+
+			DAOSoiree daoSoiree = factory.getDAOSoiree();
+
+			// Select Artiste by Soiree
+			System.out.println("---Select Artiste by Soiree---");
+			for (Artiste a : daoSoiree.selectArtisteBySoiree(1)) {
+				System.out.println(a.getPrenom() + ' ' + a.getNom() + " aka " + a.getPseudo() + " (" + a.getAge() + " ans) " + " de " + a.getVille());
 			}
 
 

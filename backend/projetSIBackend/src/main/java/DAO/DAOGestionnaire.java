@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import java.util.List;
 
 public class DAOGestionnaire extends DAO<Gestionnaire> {
 
@@ -78,5 +79,15 @@ public class DAOGestionnaire extends DAO<Gestionnaire> {
 		} catch (Exception e) {
 			if (trans != null) trans.rollback();
 		}
+	}
+
+	/**
+	 * Retourne la liste de tous les gestionnaires de la base de données
+	 * @return la liste de tous les gestionnaires de la base de données
+	 * @throws DAOException si une erreur survient
+	 */
+	public List<Gestionnaire> findAll() throws DAOException {
+		Query query = entityManager.createNamedQuery("Gestionnaire.findAll");
+		return query.getResultList();
 	}
 }

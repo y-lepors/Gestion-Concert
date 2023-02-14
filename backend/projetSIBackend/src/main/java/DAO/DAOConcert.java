@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import java.util.List;
 
 /**
  * DAO pour la table concert avec implémentation en JPA
@@ -81,5 +82,15 @@ public class DAOConcert extends DAO<Concert> {
 		} catch (Exception e) {
 			if (trans != null) trans.rollback();
 		}
+	}
+
+	/**
+	 * Retourne la liste de tous les concerts
+	 * @return List<Concert> la liste des objets trouvés
+	 * @throws DAOException si la requête échoue
+	 */
+	public List<Concert> findAll() throws DAOException {
+		Query query = entityManager.createNamedQuery("Concert.findAll");
+		return query.getResultList();
 	}
 }

@@ -1,4 +1,4 @@
-{
+[{
     "url" : "www.example.com",
     "type" : "Image or Article",
     "date" : "DD/MM/YYYY",
@@ -17,4 +17,4 @@
         "Soiree" : [],
         "Salle" : []
     }
-}
+}]
