@@ -1,0 +1,20 @@
+{
+    "url" : "www.example.com",
+    "type" : "Image or Article",
+    "date" : "DD/MM/YYYY",
+    "Auteur" : "Auteur",
+    "Titre" : "Titre",
+    "lier" : {
+        "Concert" : [
+            "Concert 1",
+            "Concert 2"
+        ],
+        "Artiste" : [
+            "Artiste 1",
+            "Artiste 2"
+        ],
+        "Groupe" : [],
+        "Soiree" : [],
+        "Salle" : []
+    }
+}
