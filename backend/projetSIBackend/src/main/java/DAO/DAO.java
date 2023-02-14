@@ -1,5 +1,7 @@
 package DAO;
 
+import data.Groupe;
+
 public abstract class DAO<D> {
 
 	/**

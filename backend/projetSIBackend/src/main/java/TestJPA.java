@@ -1,6 +1,9 @@
 import DAO.DAO;
 import DAO.DAOFactory;
 import data.Artiste;
+import data.Groupe;
+import DAO.DAOGroupe;
+import DAO.DAOArtiste;
 
 public class TestJPA {
 
@@ -11,7 +14,7 @@ public class TestJPA {
 	public static void main(String[] argv) throws Exception {
 		try {
 			DAOFactory factory = new DAOFactory();
-			DAO<Artiste> daoArtiste = factory.getDAOArtiste();
+			DAOArtiste daoArtiste = factory.getDAOArtiste();
 
 			// create
 			System.out.println("---create---");
@@ -40,6 +43,32 @@ public class TestJPA {
 			// delete
 			System.out.println("---delete---");
 			daoArtiste.delete(a1);
+
+
+			// Create a new Groupe
+			DAOGroupe daoGroupe = factory.getDAOGroupe();
+			Groupe g1 = new Groupe();
+			g1.setNom("Groupe 1");
+
+			Groupe g2 = new Groupe();
+			g2.setNom("Groupe 2");
+
+			Groupe g3 = new Groupe();
+			g3.setNom("Groupe 3");
+
+			// Add the new Groupe to the database
+			daoGroupe.create(g1);
+			daoGroupe.create(g2);
+			daoGroupe.create(g3);
+
+			// FindAll Groupe
+			System.out.println("---findAll Groupe---");
+			for (Groupe g : daoGroupe.findAll()) {
+				System.out.println(g.getNom());
+			}
+
+
+
 
 		} catch (Exception e) {
 			System.err.println(e);
