@@ -1,47 +1,30 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import Header from "./components/Header.vue";
+import Page1 from "./components/Page1.vue";
+import Page2 from "./components/Page2.vue";
+</script>
+
+<script>
+export default {
+  data() {
+    return {
+      currentPage:1,
+    };
+  },
+}
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
+    <Header page="1" @response="(msg) => currentPage = msg"/>
   </header>
 
   <main>
-    <TheWelcome />
+    <div v-if="currentPage == 1">
+      <Page1 />
+    </div>
+    <div v-if="currentPage == 2">
+      <Page2 />
+    </div>
   </main>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
