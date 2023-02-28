@@ -1,8 +1,8 @@
-package com.services;
+package api.services;
 
-import com.dtos.SalleDTO;
-import com.entities.Salle;
-import com.repositories.SalleRepository;
+import api.dtos.SalleDTO;
+import api.entities.Salle;
+import api.repositories.SalleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -64,7 +64,7 @@ public class SalleService {
      * @return L'objet Entity converti.
      */
     public Salle convertToEntity(SalleDTO salleDTO) {
-        Salle salle = new Salle(salleDTO.getNom(), salleDTO.getNombrePlaces(), salleDTO.getAdresse());
+        Salle salle = new Salle(salleDTO.getIdSalle(),salleDTO.getNom(),  salleDTO.getAdresse(), salleDTO.getCapacite(), salleDTO.getSoirees(),salleDTO.getConcerts(), salleDTO.getGestionnaire());
         salle.setGestionnaire(salleDTO.getGestionnaire());
         return salle;
     }
@@ -75,8 +75,15 @@ public class SalleService {
      * @return L'objet DTO converti.
      */
     public SalleDTO convertToDTO(Salle salle) {
-        SalleDTO salleDTO = new SalleDTO(salle.getNom(), salle.getNombrePlaces(), salle.getAdresse(), salle.getGestionnaire());
+        SalleDTO salleDTO = new SalleDTO();
         salleDTO.setIdSalle(salle.getIdSalle());
+        salleDTO.setNom(salle.getNom());
+        salleDTO.setAdresse(salle.getAdresse());
+        salleDTO.setCapacite(salle.getCapacite());
+        salleDTO.setSoirees(salle.getSoirees());
+        salleDTO.setConcerts(salle.getConcerts());
+        salleDTO.setGestionnaire(salle.getGestionnaire());
+
         return salleDTO;
     }
 }

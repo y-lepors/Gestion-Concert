@@ -1,8 +1,8 @@
-package com.controllers;
+package api.controllers;
 
-import com.dtos.SalleDTO;
-import com.entities.Salle;
-import com.services.SalleService;
+import api.dtos.SalleDTO;
+import api.entities.Salle;
+import api.services.SalleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

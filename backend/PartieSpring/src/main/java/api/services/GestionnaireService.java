@@ -1,8 +1,8 @@
-package com.services;
+package api.services;
 
-import com.dtos.GestionnaireDTO;
-import com.entities.Gestionnaire;
-import com.repositories.GestionnaireRepository;
+import api.dtos.GestionnaireDTO;
+import api.entities.Gestionnaire;
+import api.repositories.GestionnaireRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
