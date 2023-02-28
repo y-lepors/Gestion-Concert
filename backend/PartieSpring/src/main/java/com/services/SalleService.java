@@ -1,56 +1,82 @@
 package com.services;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
+import com.dtos.SalleDTO;
+import com.entities.Salle;
+import com.repositories.SalleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import com.dtos.SalleDto;
-import com.entities.Salle;
-import com.mapper.SalleMapper;
-import com.repositories.SalleRepository;
 
 import javax.persistence.EntityNotFoundException;
 
+/**
+ Cette classe sert de service pour l'objet Salle. Elle permet de faire le lien entre le contrôleur et le repository
+ tout en réalisant des opérations de conversion entre les objets DTO et Entity.
+ */
 @Service
-@Transactional
 public class SalleService {
-
     @Autowired
     private SalleRepository salleRepository;
 
-    private SalleMapper salleMapper;
-
-    public List<SalleDto> getAllSalles() {
-        List<Salle> salles = salleRepository.findAll();
-        return salles.stream().map(salleMapper::toDto).collect(Collectors.toList());
+    /**
+     Cette méthode permet de créer une salle en utilisant un objet DTO et de la sauvegarder en utilisant le repository.
+     @param salleDTO L'objet DTO contenant les informations de la salle à créer.
+     @return L'objet Entity de la salle créée.
+     */
+    public Salle createSalle(SalleDTO salleDTO) {
+        Salle salle = convertToEntity(salleDTO);
+        return salleRepository.save(salle);
     }
 
-    public SalleDto getSalleById(Long idSalle) {
-        Salle salle = salleRepository.findById(idSalle)
-                .orElseThrow(() -> new EntityNotFoundException("Salle non trouvée avec l'ID: " + idSalle));
-        return salleMapper.toDto(salle);
+    /**
+     Cette méthode permet de récupérer une salle en utilisant son identifiant et en utilisant le repository.
+     @param idSalle L'identifiant de la salle à récupérer.
+     @return L'objet Entity de la salle récupérée.
+     @throws EntityNotFoundException Si la salle n'a pas été trouvée avec l'identifiant donné.
+     */
+    public Salle getSalle(Long idSalle) {
+        return salleRepository.findById(idSalle)
+                .orElseThrow(() -> new EntityNotFoundException("Salle not found with id: " + idSalle));
     }
 
-    public SalleDto createSalle(SalleDto salleDto) {
-        Salle salle = salleMapper.toEntity(salleDto);
-        Salle newSalle = salleRepository.save(salle);
-        return salleMapper.toDto(newSalle);
+    /**
+        Cette méthode permet de mettre à jour une salle en utilisant son identifiant et en utilisant le repository.
+        @param idSalle L'identifiant de la salle à mettre à jour.
+        @param salleDTO L'objet DTO contenant les informations de la salle à mettre à jour.
+        @return L'objet Entity de la salle mise à jour.
+     */
+    public Salle updateSalle(Long idSalle, SalleDTO salleDTO) {
+        Salle salle = convertToEntity(salleDTO);
+        salle.setIdSalle(idSalle);
+        return salleRepository.save(salle);
     }
 
-    public SalleDto updateSalle(Long idSalle, SalleDto salleDto) {
-        Salle salle = salleRepository.findById(idSalle)
-                .orElseThrow(() -> new EntityNotFoundException("Salle non trouvée avec l'ID: " + idSalle));
-        salle.setNom(salleDto.getNom());
-        salle.setNombrePlaces(salleDto.getNombrePlaces());
-        salle.setAdresse(salleDto.getAdresse());
-        Salle updatedSalle = salleRepository.save(salle);
-        return salleMapper.toDto(updatedSalle);
-    }
-
+    /**
+     * Cette méthode permet de supprimer une salle en utilisant son identifiant et en utilisant le repository.
+     * @param idSalle L'identifiant de la salle à supprimer.
+     */
     public void deleteSalle(Long idSalle) {
         salleRepository.deleteById(idSalle);
+    }
+
+    /**
+     * Cette méthode permet de convertir un objet DTO en objet Entity.
+     * @param salleDTO L'objet DTO à convertir.
+     * @return L'objet Entity converti.
+     */
+    public Salle convertToEntity(SalleDTO salleDTO) {
+        Salle salle = new Salle(salleDTO.getNom(), salleDTO.getNombrePlaces(), salleDTO.getAdresse());
+        salle.setGestionnaire(salleDTO.getGestionnaire());
+        return salle;
+    }
+
+    /**
+     * Cette méthode permet de convertir un objet Entity en objet DTO.
+     * @param salle L'objet Entity à convertir.
+     * @return L'objet DTO converti.
+     */
+    public SalleDTO convertToDTO(Salle salle) {
+        SalleDTO salleDTO = new SalleDTO(salle.getNom(), salle.getNombrePlaces(), salle.getAdresse(), salle.getGestionnaire());
+        salleDTO.setIdSalle(salle.getIdSalle());
+        return salleDTO;
     }
 }

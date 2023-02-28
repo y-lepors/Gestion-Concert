@@ -1,53 +1,40 @@
 package com.controllers;
 
-import java.util.List;
-
+import com.dtos.SalleDTO;
+import com.entities.Salle;
+import com.services.SalleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.dtos.SalleDto;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/salles")
 public class SalleController {
-
     @Autowired
-    private SalleServiceImpl salleService;
+    private SalleService salleService;
 
-    @GetMapping("")
-    public List<SalleDto> getAllSalles() {
-        return salleService.getAllSalles();
+    @PostMapping
+    public ResponseEntity<SalleDTO> createSalle(@RequestBody SalleDTO salleDTO) {
+        Salle salle = salleService.createSalle(salleDTO);
+        return new ResponseEntity<>(salleService.convertToDTO(salle), HttpStatus.CREATED);
     }
 
     @GetMapping("/{idSalle}")
-    public SalleDto getSalleById(@PathVariable Long idSalle) {
-        return salleService.getSalleById(idSalle);
-    }
-
-    @PostMapping("")
-    public ResponseEntity<SalleDto> createSalle(@RequestBody SalleDto salleDto) {
-        SalleDto newSalle = salleService.createSalle(salleDto);
-        return new ResponseEntity<>(newSalle, HttpStatus.CREATED);
+    public ResponseEntity<SalleDTO> getSalle(@PathVariable Long idSalle) {
+        Salle salle = salleService.getSalle(idSalle);
+        return new ResponseEntity<>(salleService.convertToDTO(salle), HttpStatus.OK);
     }
 
     @PutMapping("/{idSalle}")
-    public SalleDto updateSalle(@PathVariable Long idSalle, @RequestBody SalleDto salleDto) {
-        return salleService.updateSalle(idSalle, salleDto);
+    public ResponseEntity<SalleDTO> updateSalle(@PathVariable Long idSalle, @RequestBody SalleDTO salleDTO) {
+        Salle salle = salleService.updateSalle(idSalle, salleDTO);
+        return new ResponseEntity<>(salleService.convertToDTO(salle), HttpStatus.OK);
     }
 
     @DeleteMapping("/{idSalle}")
-    public void deleteSalle(@PathVariable Long idSalle) {
+    public ResponseEntity<Void> deleteSalle(@PathVariable Long idSalle) {
         salleService.deleteSalle(idSalle);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
-
-

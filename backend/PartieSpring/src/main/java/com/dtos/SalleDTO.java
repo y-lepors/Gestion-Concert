@@ -1,30 +1,22 @@
-package com.entities;
+package com.dtos;
 
-import javax.persistence.*;
+import com.entities.Gestionnaire;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@Entity
-@Table(name = "salle")
-public class Salle {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class SalleDTO {
     private Long idSalle;
-
     private String nom;
     private int nombrePlaces;
     private String adresse;
-
-    @ManyToOne
-    @JoinColumn(name = "idGestionnaire")
     private Gestionnaire gestionnaire;
 
-    public Salle(String nom, int nombrePlaces, String adresse) {
+    public SalleDTO(String nom, int nombrePlaces, String adresse, Gestionnaire gestionnaire) {
         this.nom = nom;
         this.nombrePlaces = nombrePlaces;
         this.adresse = adresse;
+        this.gestionnaire = gestionnaire;
     }
 }
-
