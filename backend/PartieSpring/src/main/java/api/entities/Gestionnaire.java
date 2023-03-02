@@ -8,17 +8,15 @@ import lombok.*;
 import java.util.List;
 
 @Entity
-@Table(name = "gestionnaire")
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter @Setter
+@Data
 public class Gestionnaire {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_gestionnaire")
 	private Long idGestionnaire;
 	private String nom;
 	private String president;
-	@OneToMany(mappedBy = "gestionnaire")
-	@JsonManagedReference
+	@OneToMany(mappedBy = "gestionnaire", cascade = CascadeType.ALL)
+	@JsonManagedReference(value = "gestionnaire-salle")
 	private List<Salle> salles;
 }

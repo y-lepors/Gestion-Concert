@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 public class GestionnaireMapper {
 
     public GestionnaireDTO toDTO(Gestionnaire gestionnaire){
+        System.out.println("debut mapper");
         GestionnaireDTO gestionnaireDTO = new GestionnaireDTO();
         gestionnaireDTO.setIdGestionnaire(gestionnaire.getIdGestionnaire());
         gestionnaireDTO.setNom(gestionnaire.getNom());
@@ -25,6 +26,7 @@ public class GestionnaireMapper {
     }
 
     public Gestionnaire toEntity(GestionnaireDTO gestionnaireDTO){
+        System.out.println("debut mapper");
         Gestionnaire gestionnaire = new Gestionnaire();
         gestionnaire.setIdGestionnaire(gestionnaireDTO.getIdGestionnaire());
         gestionnaire.setNom(gestionnaireDTO.getNom());

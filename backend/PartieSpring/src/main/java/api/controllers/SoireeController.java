@@ -2,6 +2,7 @@ package api.controllers;
 
 import api.dtos.SoireeDTO;
 import api.services.SoireeService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -33,5 +34,10 @@ public class SoireeController {
 	@DeleteMapping("/{id}")
 	public Boolean deleteSoiree(@PathVariable Long id){
 		return soireeService.deleteSoiree(id);
+	}
+
+	@PostMapping("/update")
+	public void updateSoiree(final @RequestBody SoireeDTO soireeDTO){
+		soireeService.updateSoiree(soireeDTO);
 	}
 }

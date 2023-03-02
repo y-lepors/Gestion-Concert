@@ -1,1 +1,14 @@
-GET localhost:8080/soirees/1
+GET localhost:8080/salles
+
+###
+
+POST localhost:8080/soirees/update
+Content-Type: application/json
+
+{
+  "idSoiree": 2,
+  "nom": "la super soiree",
+  "salle": {
+    "idSalle": 1
+  }
+}

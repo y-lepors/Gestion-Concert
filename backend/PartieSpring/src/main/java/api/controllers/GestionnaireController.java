@@ -2,39 +2,39 @@ package api.controllers;
 
 import api.dtos.GestionnaireDTO;
 import api.services.GestionnaireService;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
-/**
- * Cette classe représente le controller GestionnaireController qui permet de gérer les requêtes HTTP relatives à l'entité Gestionnaire.
- */
 @RestController
 @RequestMapping("/gestionnaires")
 public class GestionnaireController {
+
     private final GestionnaireService gestionnaireService;
 
     public GestionnaireController(GestionnaireService gestionnaireService) {
         this.gestionnaireService = gestionnaireService;
     }
 
-    @GetMapping("/{idGestionnaire}")
-    public GestionnaireDTO getGestionnaire(@PathVariable Long idGestionnaire) {
-        return gestionnaireService.getGestionnaire(idGestionnaire);
+    @GetMapping
+    public List<GestionnaireDTO> getGestionnaires() {
+        return gestionnaireService.getAllGestionnaires();
     }
 
-    @PostMapping
-    public GestionnaireDTO createGestionnaire(@RequestBody GestionnaireDTO gestionnaireDTO) {
-        return gestionnaireService.createGestionnaire(gestionnaireDTO);
+    @GetMapping("/{id}")
+    public GestionnaireDTO getGestionnaire(@PathVariable Long id){
+        System.out.println("debut controller");
+        return gestionnaireService.getGestionnaireById(id);
     }
 
-    @PutMapping("/{idGestionnaire}")
-    public GestionnaireDTO updateGestionnaire(@PathVariable Long idGestionnaire, @RequestBody GestionnaireDTO gestionnaireDTO) {
-        return gestionnaireService.updateGestionnaire(idGestionnaire, gestionnaireDTO);
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public GestionnaireDTO saveGestionnaire(final @RequestBody GestionnaireDTO gestionnaireDTO){
+        System.out.println("debut controller");
+        return gestionnaireService.saveGestionnaire(gestionnaireDTO);
     }
 
-    @DeleteMapping("/{idGestionnaire}")
-    public void deleteGestionnaire(@PathVariable Long idGestionnaire) {
-        gestionnaireService.deleteGestionnaire(idGestionnaire);
+    @DeleteMapping("/{id}")
+    public Boolean deleteGestionnaire(@PathVariable Long id){
+        return gestionnaireService.deleteGestionnaire(id);
     }
-
-
 }

@@ -1,40 +1,37 @@
 package api.controllers;
 
 import api.dtos.SalleDTO;
-import api.entities.Salle;
 import api.services.SalleService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 @RequestMapping("/salles")
 public class SalleController {
-    @Autowired
-    private SalleService salleService;
+
+    private final SalleService salleService;
+
+    public SalleController(SalleService salleService) {
+        this.salleService = salleService;
+    }
+
+    @GetMapping
+    public List<SalleDTO> getSalles() {
+        return salleService.getAllSalles();
+    }
+
+    @GetMapping("/{id}")
+    public SalleDTO getSalle(@PathVariable Long id){
+        return salleService.getSalleById(id);
+    }
 
     @PostMapping
-    public ResponseEntity<SalleDTO> createSalle(@RequestBody SalleDTO salleDTO) {
-        Salle salle = salleService.createSalle(salleDTO);
-        return new ResponseEntity<>(salleService.convertToDTO(salle), HttpStatus.CREATED);
+    public SalleDTO saveSalle(final @RequestBody SalleDTO salleDTO){
+        return salleService.saveSalle(salleDTO);
     }
 
-    @GetMapping("/{idSalle}")
-    public ResponseEntity<SalleDTO> getSalle(@PathVariable Long idSalle) {
-        Salle salle = salleService.getSalle(idSalle);
-        return new ResponseEntity<>(salleService.convertToDTO(salle), HttpStatus.OK);
-    }
-
-    @PutMapping("/{idSalle}")
-    public ResponseEntity<SalleDTO> updateSalle(@PathVariable Long idSalle, @RequestBody SalleDTO salleDTO) {
-        Salle salle = salleService.updateSalle(idSalle, salleDTO);
-        return new ResponseEntity<>(salleService.convertToDTO(salle), HttpStatus.OK);
-    }
-
-    @DeleteMapping("/{idSalle}")
-    public ResponseEntity<Void> deleteSalle(@PathVariable Long idSalle) {
-        salleService.deleteSalle(idSalle);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    @DeleteMapping("/{id}")
+    public Boolean deleteSalle(@PathVariable Long id){
+        return salleService.deleteSalle(id);
     }
 }
