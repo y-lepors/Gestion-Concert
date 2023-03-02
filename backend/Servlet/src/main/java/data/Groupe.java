@@ -13,7 +13,7 @@ import java.util.Set;
  * @author yanis.lepors
  */
 @Entity
-@Table(name = "Groupe")
+@Table(name = "groupe")
 @NamedQueries({
     @NamedQuery(name = "Groupe.findAll", query = "SELECT g FROM Groupe g"),
     @NamedQuery(name = "Groupe.findByIdGroupe", query = "SELECT g FROM Groupe g WHERE g.idGroupe = :idGroupe"),
@@ -24,7 +24,7 @@ public class Groupe implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idGroupe")
+    @Column(name = "id_groupe")
     private Integer idGroupe;
     @Column(name = "nom")
     private String nom;
