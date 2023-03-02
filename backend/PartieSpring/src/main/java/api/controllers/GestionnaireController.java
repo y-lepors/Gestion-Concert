@@ -1,5 +1,7 @@
 package api.controllers;
 
+import api.dtos.GestionnaireDTO;
+import api.services.GestionnaireService;
 import org.springframework.web.bind.annotation.*;
 
 /**

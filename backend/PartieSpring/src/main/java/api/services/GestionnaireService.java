@@ -2,6 +2,8 @@ package api.services;
 
 import api.dtos.GestionnaireDTO;
 import api.entities.Gestionnaire;
+import api.mappers.GestionnaireMapper;
+import api.mappers.SoireeMapper;
 import api.repositories.GestionnaireRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,26 +19,27 @@ import javax.persistence.EntityNotFoundException;
 public class GestionnaireService {
 
     @Autowired
-    private final GestionnaireRepository gestionnaireRepository;
+    private GestionnaireRepository gestionnaireRepository;
+    @Autowired
+    private GestionnaireMapper gestionnaireMapper;
 
     public GestionnaireDTO getGestionnaire(Long idGestionnaire) {
-        Gestionnaire gestionnaire = gestionnaireRepository.findById(idGestionnaire).orElseThrow(() -> new EntityNotFoundException("Gestionnaire", "idGestionnaire", idGestionnaire));
-        return gestionnaireMapper.gestionnaireToGestionnaireDTO(gestionnaire);
+        Gestionnaire gestionnaire = gestionnaireRepository.findById(idGestionnaire).orElseThrow(() -> new EntityNotFoundException("Gestionnaire not found"));
+        return gestionnaireMapper.toDTO(gestionnaire);
     }
 
     public GestionnaireDTO createGestionnaire(GestionnaireDTO gestionnaireDTO) {
-        Gestionnaire gestionnaire = gestionnaireMapper.gestionnaireDTOToGestionnaire(gestionnaireDTO);
+        Gestionnaire gestionnaire = gestionnaireMapper.toEntity(gestionnaireDTO);
         gestionnaire = gestionnaireRepository.save(gestionnaire);
-        return gestionnaireMapper.gestionnaireToGestionnaireDTO(gestionnaire);
+        return gestionnaireMapper.toDTO(gestionnaire);
     }
 
     public GestionnaireDTO updateGestionnaire(Long idGestionnaire, GestionnaireDTO gestionnaireDTO) {
-        Gestionnaire gestionnaire = gestionnaireRepository.findById(idGestionnaire).orElseThrow(() -> new EntityNotFoundException("Gestionnaire", "idGestionnaire", idGestionnaire));
+        Gestionnaire gestionnaire = gestionnaireRepository.findById(idGestionnaire).orElseThrow(() -> new EntityNotFoundException("Gestionnaire not found"));
         gestionnaire.setNom(gestionnaireDTO.getNom());
         gestionnaire.setPresident(gestionnaireDTO.getPresident());
-        gestionnaire.setTypeGestionnaire(gestionnaireDTO.getTypeGestionnaire());
         gestionnaire = gestionnaireRepository.save(gestionnaire);
-        return gestionnaireMapper.gestionnaireToGestionnaireDTO(gestionnaire);
+        return gestionnaireMapper.toDTO(gestionnaire);
     }
 
     public void deleteGestionnaire(Long idGestionnaire) {

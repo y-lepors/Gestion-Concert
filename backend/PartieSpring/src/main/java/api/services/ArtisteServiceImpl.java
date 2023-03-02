@@ -18,8 +18,9 @@ public class ArtisteServiceImpl implements ArtisteService {
         this.artisteRepo = artisteRepo;
     }
 
+
     @Override
-    public ArtisteDTO saveDog(ArtisteDTO artisteDTO) {
+    public ArtisteDTO saveArtiste(ArtisteDTO artisteDTO) {
         Artiste artiste = artisteDTOToEntity(artisteDTO);
         artiste = artisteRepo.save(artiste);
         return artisteEntityToDTO(artiste);
@@ -27,13 +28,13 @@ public class ArtisteServiceImpl implements ArtisteService {
 
     @Override
     public ArtisteDTO getArtisteById(Integer id) {
-        Artiste artiste = artisteRepo.findById(id).orElseThrow(() -> new EntityNotFoundException("Artiste not found"));
+        Artiste artiste = artisteRepo.findById(id.longValue()).orElseThrow(() -> new EntityNotFoundException("Artiste not found"));
         return artisteEntityToDTO(artiste);
     }
 
     @Override
     public boolean deleteArtiste(Integer id) {
-        artisteRepo.deleteById(id);
+        artisteRepo.deleteById(id.longValue());
         return true;
     }
 
@@ -49,8 +50,8 @@ public class ArtisteServiceImpl implements ArtisteService {
 
     private ArtisteDTO artisteEntityToDTO(Artiste artiste){
         ArtisteDTO artisteDTO = new ArtisteDTO();
-        artisteDTO.setId(artiste.getId());
-        artisteDTO.setName(artiste.getNom());
+        artisteDTO.setIdArtiste(artiste.getIdArtiste());
+        artisteDTO.setNom(artiste.getNom());
         artisteDTO.setPrenom(artisteDTO.getPrenom());
         return artisteDTO;
     }
@@ -58,7 +59,7 @@ public class ArtisteServiceImpl implements ArtisteService {
     private Artiste artisteDTOToEntity(ArtisteDTO artisteDTO){
         Artiste artiste = new Artiste();
         artiste.setNom(artisteDTO.getNom());
-        artiste.setId(artisteDTO.getId());
+        artiste.setIdArtiste(artisteDTO.getIdArtiste());
         artiste.setPrenom(artisteDTO.getPrenom());
         return artiste;
     }
