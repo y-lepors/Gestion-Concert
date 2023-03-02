@@ -59,7 +59,7 @@ public class SalleService {
         Cette méthode permet de mettre à jour une salle en utilisant son identifiant et en utilisant le repository.
         @param salleDTO L'objet DTO contenant les informations de la salle à mettre à jour.
      */
-    public void updateSalle(SalleDTO salleDTO) {
+    public SalleDTO updateSalle(SalleDTO salleDTO) {
         Optional<Salle> oldSalle = salleRepository.findById(salleDTO.getIdSalle());
         if (oldSalle.isEmpty()) throw new EntityNotFoundException("Salle not found");
         Salle salle = oldSalle.get();
@@ -70,6 +70,7 @@ public class SalleService {
         salle.setGestionnaire(salleDTO.getGestionnaire());
         salle.setSoirees(salleDTO.getSoirees());
         salleRepository.save(salle);
+        return salleMapper.toDTO(salle);
     }
 
     /**

@@ -2,6 +2,7 @@ package api.controllers;
 
 import api.dtos.SoireeDTO;
 import api.services.SoireeService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -16,27 +17,67 @@ public class SoireeController {
 	}
 
 	@GetMapping
-	public List<SoireeDTO> getSoirees() {
-		return soireeService.getAllSoirees();
+	public ResponseEntity<List<SoireeDTO>> getSoirees() {
+		List<SoireeDTO> soirees = soireeService.getAllSoirees();
+		if (soirees.isEmpty()) {
+			return ResponseEntity.noContent()
+					.header("Access-Control-Allow-Origin", "http://localhost:8080")
+					.build();
+		}
+		return ResponseEntity.ok()
+				.header("Access-Control-Allow-Origin", "http://localhost:8080")
+				.body(soirees);
 	}
 
 	@GetMapping("/{id}")
-	public SoireeDTO getSoiree(@PathVariable Long id){
-		return soireeService.getSoireeById(id);
+	public ResponseEntity<SoireeDTO> getSoiree(@PathVariable Long id){
+		SoireeDTO soiree = soireeService.getSoireeById(id);
+		if (soiree == null) {
+			return ResponseEntity.noContent()
+					.header("Access-Control-Allow-Origin", "http://localhost:8080")
+					.build();
+		}
+		return ResponseEntity.ok()
+				.header("Access-Control-Allow-Origin", "http://localhost:8080")
+				.body(soiree);
 	}
 
 	@PostMapping
-	public SoireeDTO saveSoiree(final @RequestBody SoireeDTO soireeDTO){
-		return soireeService.saveSoiree(soireeDTO);
+	public ResponseEntity<SoireeDTO> saveSoiree(final @RequestBody SoireeDTO soireeDTO){
+		SoireeDTO soiree = soireeService.saveSoiree(soireeDTO);
+		if (soiree == null) {
+			return ResponseEntity.noContent()
+					.header("Access-Control-Allow-Origin", "http://localhost:8080")
+					.build();
+		}
+		return ResponseEntity.ok()
+				.header("Access-Control-Allow-Origin", "http://localhost:8080")
+				.body(soiree);
 	}
 
 	@DeleteMapping("/{id}")
-	public Boolean deleteSoiree(@PathVariable Long id){
-		return soireeService.deleteSoiree(id);
+	public ResponseEntity<Boolean> deleteSoiree(@PathVariable Long id){
+		Boolean deleted = soireeService.deleteSoiree(id);
+		if (!deleted) {
+			return ResponseEntity.noContent()
+					.header("Access-Control-Allow-Origin", "http://localhost:8080")
+					.build();
+		}
+		return ResponseEntity.ok()
+				.header("Access-Control-Allow-Origin", "http://localhost:8080")
+				.body(deleted);
 	}
 
 	@PostMapping("/update")
-	public void updateSoiree(final @RequestBody SoireeDTO soireeDTO){
-		soireeService.updateSoiree(soireeDTO);
+	public ResponseEntity<SoireeDTO> updateSoiree(final @RequestBody SoireeDTO soireeDTO){
+		SoireeDTO soiree = soireeService.updateSoiree(soireeDTO);
+		if (soiree == null) {
+			return ResponseEntity.noContent()
+					.header("Access-Control-Allow-Origin", "http://localhost:8080")
+					.build();
+		}
+		return ResponseEntity.ok()
+				.header("Access-Control-Allow-Origin", "http://localhost:8080")
+				.body(soiree);
 	}
 }

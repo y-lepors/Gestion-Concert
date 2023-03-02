@@ -65,7 +65,7 @@ public class SoireeService {
 	 Cette méthode permet de mettre à jour une soirée en utilisant son identifiant et en utilisant le repository.
 	 @param soireeDTO L'objet DTO contenant les informations de la soirée à mettre à jour.
 	 */
-	public void updateSoiree(SoireeDTO soireeDTO) {
+	public SoireeDTO updateSoiree(SoireeDTO soireeDTO) {
 		Optional<Soiree> oldSoiree = soireeRepository.findById(soireeDTO.getIdSoiree());
 		if (oldSoiree.isEmpty()) throw new EntityNotFoundException("Soiree not found");
 		Soiree soiree = oldSoiree.get();
@@ -73,5 +73,6 @@ public class SoireeService {
 		soiree.setNom(soireeDTO.getNom());
 		soiree.setConcerts(soireeDTO.getConcerts());
 		soireeRepository.save(soiree);
+		return soireeMapper.toDTO(soiree);
 	}
 }

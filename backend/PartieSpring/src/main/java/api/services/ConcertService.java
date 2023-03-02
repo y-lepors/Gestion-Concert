@@ -59,7 +59,7 @@ public class ConcertService {
      Cette méthode permet de mettre à jour un concert en utilisant son identifiant et en utilisant le repository.
      @param concertDTO L'objet DTO contenant les informations du concert à mettre à jour.
      */
-    public void updateConcert(ConcertDTO concertDTO) {
+    public ConcertDTO updateConcert(ConcertDTO concertDTO) {
         Optional<Concert> oldConcert = concertRepository.findById(concertDTO.getIdConcert());
         if (oldConcert.isEmpty()) throw new EntityNotFoundException("Concert not found");
         Concert concert = oldConcert.get();
@@ -68,6 +68,7 @@ public class ConcertService {
         concert.setSalle(concertDTO.getSalle());
         concert.setSoiree(concertDTO.getSoiree());
         concertRepository.save(concert);
+        return concertMapper.toDTO(concert);
     }
 
     /**

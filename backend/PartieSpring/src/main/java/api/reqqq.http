@@ -26,4 +26,15 @@ Content-Type: application/json
 
 ###
 
-GET localhost:8080/gestionnaires/1
+GET localhost:8080/gestionnaires
+
+###
+
+POST localhost:8080/gestionnaires/update
+Content-Type: application/json
+
+{
+  "idGestionnaire": 6,
+  "nom": "Martin",
+  "president": "non"
+}

@@ -2,6 +2,7 @@ package api.controllers;
 
 import api.dtos.SalleDTO;
 import api.services.SalleService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -16,27 +17,67 @@ public class SalleController {
     }
 
     @GetMapping
-    public List<SalleDTO> getSalles() {
-        return salleService.getAllSalles();
+    public ResponseEntity<List<SalleDTO>> getSalles() {
+        List<SalleDTO> salles = salleService.getAllSalles();
+        if (salles.isEmpty()) {
+            return ResponseEntity.noContent()
+                    .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                    .build();
+        }
+        return ResponseEntity.ok()
+                .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                .body(salles);
     }
 
     @GetMapping("/{id}")
-    public SalleDTO getSalle(@PathVariable Long id){
-        return salleService.getSalleById(id);
+    public ResponseEntity<SalleDTO> getSalle(@PathVariable Long id){
+        SalleDTO salle = salleService.getSalleById(id);
+        if (salle == null) {
+            return ResponseEntity.noContent()
+                    .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                    .build();
+        }
+        return ResponseEntity.ok()
+                .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                .body(salle);
     }
 
     @PostMapping
-    public SalleDTO saveSalle(final @RequestBody SalleDTO salleDTO){
-        return salleService.saveSalle(salleDTO);
+    public ResponseEntity<SalleDTO> saveSalle(final @RequestBody SalleDTO salleDTO){
+        SalleDTO salle = salleService.saveSalle(salleDTO);
+        if (salle == null) {
+            return ResponseEntity.noContent()
+                    .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                    .build();
+        }
+        return ResponseEntity.ok()
+                .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                .body(salle);
     }
 
     @DeleteMapping("/{id}")
-    public Boolean deleteSalle(@PathVariable Long id){
-        return salleService.deleteSalle(id);
+    public ResponseEntity<Boolean> deleteSalle(@PathVariable Long id) {
+        Boolean isDeleted = salleService.deleteSalle(id);
+        if (!isDeleted) {
+            return ResponseEntity.noContent()
+                    .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                    .build();
+        }
+        return ResponseEntity.ok()
+                .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                .body(isDeleted);
     }
 
     @PostMapping("/update")
-    public void updateSalle(final @RequestBody SalleDTO salleDTO){
-        salleService.updateSalle(salleDTO);
+    public ResponseEntity<SalleDTO> updateSalle(final @RequestBody SalleDTO salleDTO) {
+        SalleDTO salle = salleService.updateSalle(salleDTO);
+        if (salle == null) {
+            return ResponseEntity.noContent()
+                    .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                    .build();
+        }
+        return ResponseEntity.ok()
+                .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                .body(salle);
     }
 }

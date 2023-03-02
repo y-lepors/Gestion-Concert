@@ -63,7 +63,7 @@ public class GestionnaireService {
      @param gestionnaireDTO L'objet DTO contenant les informations du gestionnaire à mettre à jour.
      @return L'objet Entity du gestionnaire mis à jour.
      */
-    public void updateGestionnaire(GestionnaireDTO gestionnaireDTO) {
+    public GestionnaireDTO updateGestionnaire(GestionnaireDTO gestionnaireDTO) {
         Optional<Gestionnaire> oldGestionnaire = gestionnaireRepository.findById(gestionnaireDTO.getIdGestionnaire());
         if (oldGestionnaire.isEmpty()) throw new EntityNotFoundException("Gestionnaire not found");
         Gestionnaire gestionnaire = oldGestionnaire.get();
@@ -72,6 +72,7 @@ public class GestionnaireService {
         gestionnaire.setPresident(gestionnaireDTO.getPresident());
         gestionnaire.setTypeGestionnaire(gestionnaireDTO.getTypeGestionnaire());
         gestionnaireRepository.save(gestionnaire);
+        return gestionnaireMapper.toDTO(gestionnaire);
     }
 
     /**
