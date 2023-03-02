@@ -1,18 +1,27 @@
 <script setup>
 import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
 import ListeSalle from "./components/ListeSalle.vue";
 import ListeArtiste from "./components/ListeArtiste.vue";
+
 </script>
 
 <script>
 export default {
+	
 	data() {
 		return {
 			currentPage: 1,
+			isAdmin: localStorage.getItem('isAdmin') === 'true' ? true : false,
 		};
-	}
+	},
+	methods: {
+		updateAdmin() {
+			this.isAdmin = localStorage.getItem('isAdmin') === 'true' ? true : false;
+		},
+		
+	},
 }
-console.log(isAdmin);
 </script>
 
 <template>
@@ -30,6 +39,6 @@ console.log(isAdmin);
 	</main>
 
 	<footer>
-		<Footer />
+		<Footer @response="(msg) => updateAdmin"/>
 	</footer>
 </template>
