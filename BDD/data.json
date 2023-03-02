@@ -2,19 +2,19 @@
     "url" : "www.example.com",
     "type" : "Image or Article",
     "date" : "DD/MM/YYYY",
-    "Auteur" : "Auteur",
-    "Titre" : "Titre",
+    "auteur" : "Auteur",
+    "titre" : "Titre",
     "lier" : {
-        "Concert" : [
+        "concert" : [
             "Concert 1",
             "Concert 2"
         ],
-        "Artiste" : [
+        "artiste" : [
             "Artiste 1",
             "Artiste 2"
         ],
-        "Groupe" : [],
-        "Soiree" : [],
-        "Salle" : []
+        "groupe" : [],
+        "soiree" : [],
+        "salle" : []
     }
 }]

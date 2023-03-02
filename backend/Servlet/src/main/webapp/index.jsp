@@ -9,6 +9,6 @@
 </h1>
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
-<p><a href="Groupes?operation=listeGroupe">Afficher tous les groupes</a></p>
+<p><a href="Groupes">Afficher tous les groupes</a></p>
 </body>
 </html>

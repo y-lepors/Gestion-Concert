@@ -5,63 +5,63 @@ import java.util.Objects;
 
 public class Lier {
 
-    private List<String> Concert;
+    private List<String> concert;
 
-    private List<String> Artiste;
+    private List<String> artiste;
 
-    private List<String> Groupe;
+    private List<String> groupe;
 
-    private List<String> Soiree;
+    private List<String> soiree;
 
-    private List<String> Salle;
+    private List<String> salle;
 
     public List<String> getConcert() {
-        return Concert;
+        return concert;
     }
 
     public void setConcert(List<String> Concert) {
-        this.Concert = Concert;
+        this.concert = Concert;
     }
 
     public List<String> getArtiste() {
-        return Artiste;
+        return artiste;
     }
 
     public void setArtiste(List<String> Artiste) {
-        this.Artiste = Artiste;
+        this.artiste = Artiste;
     }
 
     public List<String> getGroupe() {
-        return Groupe;
+        return groupe;
     }
 
     public void setGroupe(List<String> Groupe) {
-        this.Groupe = Groupe;
+        this.groupe = Groupe;
     }
 
     public List<String> getSoiree() {
-        return Soiree;
+        return soiree;
     }
 
     public void setSoiree(List<String> Soiree) {
-        this.Soiree = Soiree;
+        this.soiree = Soiree;
     }
 
     public List<String> getSalle() {
-        return Salle;
+        return salle;
     }
 
     public void setSalle(List<String> Salle) {
-        this.Salle = Salle;
+        this.salle = Salle;
     }
 
     public Lier(List<String> Concert, List<String> Artiste, List<String> Groupe, List<String> Soiree, List<String> Salle) {
         super();
-        this.Concert = Concert;
-        this.Artiste = Artiste;
-        this.Groupe = Groupe;
-        this.Soiree = Soiree;
-        this.Salle = Salle;
+        this.concert = Concert;
+        this.artiste = Artiste;
+        this.groupe = Groupe;
+        this.soiree = Soiree;
+        this.salle = Salle;
     }
 
     public Lier() {
@@ -70,7 +70,7 @@ public class Lier {
 
     @Override
     public int hashCode() {
-        return Objects.hash(Artiste, Concert, Groupe, Salle, Soiree);
+        return Objects.hash(concert, artiste, groupe, salle, soiree);
     }
 
     @Override
@@ -82,6 +82,6 @@ public class Lier {
         if (getClass() != obj.getClass())
             return false;
         Lier other = (Lier) obj;
-        return Objects.equals(Artiste, other.Artiste) && Objects.equals(Concert, other.Concert) && Objects.equals(Groupe, other.Groupe) && Objects.equals(Salle, other.Salle) && Objects.equals(Soiree, other.Soiree);
+        return Objects.equals(artiste, other.artiste) && Objects.equals(concert, other.concert) && Objects.equals(groupe, other.groupe) && Objects.equals(salle, other.salle) && Objects.equals(soiree, other.soiree);
     }
 }
