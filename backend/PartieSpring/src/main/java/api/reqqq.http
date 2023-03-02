@@ -1,21 +1,25 @@
-POST localhost:8080/gestionnaires
-Content-Type: application/json
-
-{
-  "nom": "Abdoul",
-  "president": "oui"
-}
+GET localhost:8080/salles/1
 
 ###
-GET localhost:8080/gestionnaires/2
-###
+
 GET localhost:8080/salles
+
 ###
-POST localhost:8080/gestionnaires/update
+
+GET localhost:8080/concerts/1
+
+###
+
+POST localhost:8080/concerts
 Content-Type: application/json
 
 {
-  "idGestionnaire": 2,
-  "nom": "Dominique",
-  "president": "non"
+  "dateConcert": "2019-01-01",
+  "duree": 2,
+  "soiree": {
+    "idSoiree": 1
+  },
+  "salle": {
+    "idSalle": 1
+  }
 }
