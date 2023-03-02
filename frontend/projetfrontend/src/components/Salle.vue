@@ -1,12 +1,13 @@
 <script>
 export default {
 	props: {
-		idSalle: Number,
-        required: true,
+		// idSalle: Number,
+        nomSalle: String,
 	},
     data() {
 		return {
-			idS: parseInt(this.idSalle),
+			// idS: parseInt(this.idSalle),
+			nomS: this.nomSalle,
 		};
 	}
 };
@@ -14,6 +15,6 @@ export default {
 
 <template>
     <div class="salle">
-        <h1>Salle {{ idS }}</h1>
+        <h1>{{ nomS }}</h1>
     </div>
 </template>

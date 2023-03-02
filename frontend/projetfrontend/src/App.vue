@@ -2,7 +2,6 @@
 import Header from "./components/Header.vue";
 import ListeSalle from "./components/ListeSalle.vue";
 import ListeArtiste from "./components/ListeArtiste.vue";
-import Footer from "./components/Footer.vue";
 </script>
 
 <script>
@@ -13,6 +12,7 @@ export default {
 		};
 	}
 }
+console.log(isAdmin);
 </script>
 
 <template>
