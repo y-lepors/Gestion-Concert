@@ -33,14 +33,12 @@ footer{
 }
 
 .listeSalle{
-    background-color: red;
-    width: 50%;
+    width: 100%;
     max-height: 85vh;
     overflow-y: scroll;
 }
 
 .salle{
-    border: 1px solid black;
     margin: 1vh;
     margin-top: 2vh;
     padding: 0.5vh;
@@ -48,6 +46,17 @@ footer{
 }
 
 #asideSalle{
-    width: 50%;
-    background-color: green;
+    border-left: 1px solid black;
+    width: 100%;
+}
+
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+footer a{
+    text-decoration: none;
+    color: white;
 }

@@ -47,10 +47,8 @@ export default {
 			<Salle v-for="salle in salles" :idSalle="salle.id" @click="setAsideSalle(salle.id)"/>
 		</div>
 
-		<div id="asideSalle">
-			<!-- l'attribut key force la MAJ au changement de valeur -->
-			<AsideSalle :idSalle="currentSalle" :key="currentSalle"/>
-		</div>
+		<!-- l'attribut key force la MAJ au changement de valeur -->
+		<AsideSalle :idSalle="currentSalle" :key="currentSalle"/>
 	</div>
 	
 </template>
