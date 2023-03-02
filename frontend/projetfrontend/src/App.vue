@@ -1,47 +1,35 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import Header from "./components/Header.vue";
+import ListeSalle from "./components/ListeSalle.vue";
+import ListeArtiste from "./components/ListeArtiste.vue";
+import Footer from "./components/Footer.vue";
+</script>
+
+<script>
+export default {
+	data() {
+		return {
+			currentPage: 1,
+		};
+	}
+}
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+	<header>
+		<Header :page="1" @response="(msg) => currentPage = msg" />
+	</header>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+	<main>
+		<div v-if="currentPage == 1">
+			<ListeSalle />
+		</div>
+		<div v-if="currentPage == 2">
+			<ListeArtiste />
+		</div>
+	</main>
 
-  <main>
-    <TheWelcome />
-  </main>
+	<footer>
+		<Footer />
+	</footer>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
