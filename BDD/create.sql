@@ -37,10 +37,10 @@ CREATE TABLE Groupe (
 );
 
 CREATE TABLE Groupe_Has_Artiste (
-    idGroupe INT NOT NULL
-    CONSTRAINT fk_GroupeArtiste REFERENCES Groupe(idGroupe),
-    idArtiste INT NOT NULL
-    CONSTRAINT fk_ArtisteGroupe REFERENCES Artiste(idArtiste),
+    idGroupe INT NOT NULL,
+    CONSTRAINT fk_GroupeArtiste FOREIGN KEY(idGroupe) REFERENCES Groupe(idGroupe),
+    idArtiste INT NOT NULL,
+    CONSTRAINT fk_ArtisteGroupe FOREIGN KEY(idArtiste) REFERENCES Artiste(idArtiste),
     PRIMARY KEY(idGroupe, idArtiste)
 );
 
