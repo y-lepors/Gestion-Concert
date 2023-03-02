@@ -10,5 +10,6 @@ public class GestionnaireDTO {
 	private Long idGestionnaire;
 	private String nom;
 	private String president;
+	private String typeGestionnaire;
 	private List<Salle> salles;
 }

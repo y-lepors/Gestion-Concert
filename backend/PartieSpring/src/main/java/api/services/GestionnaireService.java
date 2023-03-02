@@ -70,6 +70,7 @@ public class GestionnaireService {
         gestionnaire.setNom(gestionnaireDTO.getNom());
         gestionnaire.setSalles(gestionnaireDTO.getSalles());
         gestionnaire.setPresident(gestionnaireDTO.getPresident());
+        gestionnaire.setTypeGestionnaire(gestionnaireDTO.getTypeGestionnaire());
         gestionnaireRepository.save(gestionnaire);
     }
 

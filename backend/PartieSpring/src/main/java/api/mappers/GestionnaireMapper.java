@@ -22,6 +22,7 @@ public class GestionnaireMapper {
         gestionnaireDTO.setNom(gestionnaire.getNom());
         gestionnaireDTO.setPresident(gestionnaire.getPresident());
         gestionnaireDTO.setSalles(gestionnaire.getSalles());
+        gestionnaireDTO.setTypeGestionnaire(gestionnaire.getTypeGestionnaire());
         return gestionnaireDTO;
     }
 
@@ -32,6 +33,7 @@ public class GestionnaireMapper {
         gestionnaire.setNom(gestionnaireDTO.getNom());
         gestionnaire.setPresident(gestionnaireDTO.getPresident());
         gestionnaire.setSalles(gestionnaireDTO.getSalles());
+        gestionnaire.setTypeGestionnaire(gestionnaireDTO.getTypeGestionnaire());
         return gestionnaire;
     }
 }

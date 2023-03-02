@@ -23,3 +23,7 @@ Content-Type: application/json
     "idSalle": 1
   }
 }
+
+###
+
+GET localhost:8080/gestionnaires/1
