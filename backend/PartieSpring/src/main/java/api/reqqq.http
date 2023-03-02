@@ -1,14 +1,21 @@
-GET localhost:8080/salles
-
-###
-
-POST localhost:8080/soirees/update
+POST localhost:8080/gestionnaires
 Content-Type: application/json
 
 {
-  "idSoiree": 2,
-  "nom": "la super soiree",
-  "salle": {
-    "idSalle": 1
-  }
+  "nom": "Abdoul",
+  "president": "oui"
+}
+
+###
+GET localhost:8080/gestionnaires/2
+###
+GET localhost:8080/salles
+###
+POST localhost:8080/gestionnaires/update
+Content-Type: application/json
+
+{
+  "idGestionnaire": 2,
+  "nom": "Dominique",
+  "president": "non"
 }

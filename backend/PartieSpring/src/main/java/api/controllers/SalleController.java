@@ -34,4 +34,9 @@ public class SalleController {
     public Boolean deleteSalle(@PathVariable Long id){
         return salleService.deleteSalle(id);
     }
+
+    @PostMapping("/update")
+    public void updateSalle(final @RequestBody SalleDTO salleDTO){
+        salleService.updateSalle(salleDTO);
+    }
 }

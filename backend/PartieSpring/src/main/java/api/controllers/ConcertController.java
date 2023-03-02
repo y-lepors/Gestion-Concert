@@ -35,4 +35,9 @@ public class ConcertController {
     public Boolean deleteConcert(@PathVariable Long id) {
         return concertService.deleteConcert(id);
     }
+
+    @PostMapping("/update")
+    public void updateConcert(final @RequestBody ConcertDTO concertDTO){
+        concertService.updateConcert(concertDTO);
+    }
 }

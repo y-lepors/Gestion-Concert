@@ -1,13 +1,9 @@
 package api.services;
 
 import api.dtos.ConcertDTO;
-import api.dtos.SalleDTO;
 import api.entities.Concert;
-import api.entities.Salle;
-import api.entities.Soiree;
 import api.mappers.ConcertMapper;
 import api.repositories.ConcertRepository;
-import api.repositories.SalleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -62,7 +58,6 @@ public class ConcertService {
     /**
      Cette méthode permet de mettre à jour un concert en utilisant son identifiant et en utilisant le repository.
      @param concertDTO L'objet DTO contenant les informations du concert à mettre à jour.
-     @return L'objet Entity du concert mis à jour.
      */
     public void updateConcert(ConcertDTO concertDTO) {
         Optional<Concert> oldConcert = concertRepository.findById(concertDTO.getIdConcert());

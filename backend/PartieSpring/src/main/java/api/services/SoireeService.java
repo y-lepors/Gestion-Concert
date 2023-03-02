@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import api.entities.Salle;
-import api.repositories.SalleRepository;
 import api.repositories.SoireeRepository;
 import api.dtos.SoireeDTO;
 import api.entities.Soiree;

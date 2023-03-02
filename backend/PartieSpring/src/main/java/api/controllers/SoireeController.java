@@ -2,7 +2,6 @@ package api.controllers;
 
 import api.dtos.SoireeDTO;
 import api.services.SoireeService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 

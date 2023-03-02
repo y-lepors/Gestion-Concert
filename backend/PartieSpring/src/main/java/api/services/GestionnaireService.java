@@ -81,5 +81,4 @@ public class GestionnaireService {
         gestionnaireRepository.deleteById(id);
         return true;
     }
-
 }

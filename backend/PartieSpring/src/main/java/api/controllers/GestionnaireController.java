@@ -2,7 +2,6 @@ package api.controllers;
 
 import api.dtos.GestionnaireDTO;
 import api.services.GestionnaireService;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class GestionnaireController {
         return gestionnaireService.getGestionnaireById(id);
     }
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping
     public GestionnaireDTO saveGestionnaire(final @RequestBody GestionnaireDTO gestionnaireDTO){
         System.out.println("debut controller");
         return gestionnaireService.saveGestionnaire(gestionnaireDTO);
@@ -36,5 +35,10 @@ public class GestionnaireController {
     @DeleteMapping("/{id}")
     public Boolean deleteGestionnaire(@PathVariable Long id){
         return gestionnaireService.deleteGestionnaire(id);
+    }
+
+    @PostMapping("/update")
+    public void updateGestionnaire(final @RequestBody GestionnaireDTO gestionnaireDTO){
+        gestionnaireService.updateGestionnaire(gestionnaireDTO);
     }
 }

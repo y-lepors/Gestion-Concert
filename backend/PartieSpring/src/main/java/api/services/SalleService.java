@@ -1,11 +1,7 @@
 package api.services;
 
-import api.dtos.ConcertDTO;
 import api.dtos.SalleDTO;
-import api.dtos.SoireeDTO;
-import api.entities.Concert;
 import api.entities.Salle;
-import api.entities.Soiree;
 import api.mappers.SalleMapper;
 import api.repositories.SalleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +58,6 @@ public class SalleService {
     /**
         Cette méthode permet de mettre à jour une salle en utilisant son identifiant et en utilisant le repository.
         @param salleDTO L'objet DTO contenant les informations de la salle à mettre à jour.
-        @return L'objet Entity de la salle mise à jour.
      */
     public void updateSalle(SalleDTO salleDTO) {
         Optional<Salle> oldSalle = salleRepository.findById(salleDTO.getIdSalle());
