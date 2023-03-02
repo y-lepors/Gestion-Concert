@@ -13,7 +13,7 @@ import java.util.Set;
  * @author yanis.lepors
  */
 @Entity
-@Table(name = "Salle")
+@Table(name = "salle")
 @NamedQueries({
     @NamedQuery(name = "Salle.findAll", query = "SELECT s FROM Salle s"),
     @NamedQuery(name = "Salle.findByIdSalle", query = "SELECT s FROM Salle s WHERE s.idSalle = :idSalle"),
@@ -26,7 +26,7 @@ public class Salle implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idSalle")
+    @Column(name = "id_salle")
     private Integer idSalle;
     @Column(name = "nom")
     private String nom;
@@ -34,7 +34,7 @@ public class Salle implements Serializable {
     private String adresse;
     @Column(name = "capacite")
     private Integer capacite;
-    @JoinColumn(name = "idGestionnaire", referencedColumnName = "idGestionnaire")
+    @JoinColumn(name = "id_gestionnaire", referencedColumnName = "id_gestionnaire")
     @ManyToOne(optional = false)
     private Gestionnaire idGestionnaire;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSalle")

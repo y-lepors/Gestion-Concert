@@ -13,7 +13,7 @@ import java.util.Date;
  * @author yanis.lepors
  */
 @Entity
-@Table(name = "Concert")
+@Table(name = "concert")
 @NamedQueries({
     @NamedQuery(name = "Concert.findAll", query = "SELECT c FROM Concert c"),
     @NamedQuery(name = "Concert.findByIdConcert", query = "SELECT c FROM Concert c WHERE c.idConcert = :idConcert"),
@@ -25,23 +25,23 @@ public class Concert implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idConcert")
+    @Column(name = "id_concert")
     private Integer idConcert;
-    @Column(name = "dateConcert")
+    @Column(name = "date_concert")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateConcert;
     @Column(name = "duree")
     private Integer duree;
-    @JoinColumn(name = "idArtiste", referencedColumnName = "idArtiste")
+    @JoinColumn(name = "id_artiste", referencedColumnName = "id_artiste")
     @ManyToOne
     private Artiste idArtiste;
-    @JoinColumn(name = "idGroupe", referencedColumnName = "idGroupe")
+    @JoinColumn(name = "id_groupe", referencedColumnName = "id_groupe")
     @ManyToOne
     private Groupe idGroupe;
-    @JoinColumn(name = "idSalle", referencedColumnName = "idSalle")
+    @JoinColumn(name = "id_salle", referencedColumnName = "id_salle")
     @ManyToOne(optional = false)
     private Salle idSalle;
-    @JoinColumn(name = "idSoiree", referencedColumnName = "idSoiree")
+    @JoinColumn(name = "id_soiree", referencedColumnName = "id_soiree")
     @ManyToOne(optional = false)
     private Soiree idSoiree;
 

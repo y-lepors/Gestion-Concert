@@ -13,7 +13,7 @@ import java.util.Set;
  * @author yanis.lepors
  */
 @Entity
-@Table(name = "Artiste")
+@Table(name = "artiste")
 @NamedQueries({
     @NamedQuery(name = "Artiste.findAll", query = "SELECT a FROM Artiste a"),
     @NamedQuery(name = "Artiste.findByIdArtiste", query = "SELECT a FROM Artiste a WHERE a.idArtiste = :idArtiste"),
@@ -28,7 +28,7 @@ public class Artiste implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idArtiste")
+    @Column(name = "id_artiste")
     private Integer idArtiste;
     @Column(name = "nom")
     private String nom;
@@ -40,9 +40,9 @@ public class Artiste implements Serializable {
     private String ville;
     @Column(name = "age")
     private Integer age;
-    @JoinTable(name = "Groupe_Has_Artiste", joinColumns = {
-        @JoinColumn(name = "idArtiste", referencedColumnName = "idArtiste")}, inverseJoinColumns = {
-        @JoinColumn(name = "idGroupe", referencedColumnName = "idGroupe")})
+    @JoinTable(name = "groupe_has_artiste", joinColumns = {
+        @JoinColumn(name = "id_artiste", referencedColumnName = "id_artiste")}, inverseJoinColumns = {
+        @JoinColumn(name = "id_groupe", referencedColumnName = "id_groupe")})
     @ManyToMany
     private Set<Groupe> groupeSet;
     @OneToMany(mappedBy = "idArtiste")
