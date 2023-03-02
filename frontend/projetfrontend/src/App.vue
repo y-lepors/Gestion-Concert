@@ -1,30 +1,35 @@
 <script setup>
 import Header from "./components/Header.vue";
-import Page1 from "./components/Page1.vue";
-import Page2 from "./components/Page2.vue";
+import ListeSalle from "./components/ListeSalle.vue";
+import ListeArtiste from "./components/ListeArtiste.vue";
+import Footer from "./components/Footer.vue";
 </script>
 
 <script>
 export default {
-  data() {
-    return {
-      currentPage:1,
-    };
-  },
+	data() {
+		return {
+			currentPage: 1,
+		};
+	}
 }
 </script>
 
 <template>
-  <header>
-    <Header page="1" @response="(msg) => currentPage = msg"/>
-  </header>
+	<header>
+		<Header :page="1" @response="(msg) => currentPage = msg" />
+	</header>
 
-  <main>
-    <div v-if="currentPage == 1">
-      <Page1 />
-    </div>
-    <div v-if="currentPage == 2">
-      <Page2 />
-    </div>
-  </main>
+	<main>
+		<div v-if="currentPage == 1">
+			<ListeSalle />
+		</div>
+		<div v-if="currentPage == 2">
+			<ListeArtiste />
+		</div>
+	</main>
+
+	<footer>
+		<Footer />
+	</footer>
 </template>

@@ -24,9 +24,8 @@ export default {
 
 <template>
 	<div class="header">
-		<div @click="setPage(1)">1</div>
-		<div @click="setPage(2)">2</div>
+		<div @click="setPage(1)">Salles de concert</div>
+		<div @click="setPage(2)">Artistes</div>
 	</div>
 
-	<h2>Numéro de page : {{ currentPage }}</h2>
 </template>
