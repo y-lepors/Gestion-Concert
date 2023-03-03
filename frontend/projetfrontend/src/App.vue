@@ -4,6 +4,8 @@ import Footer from "./components/Footer.vue";
 import ListeSalle from "./components/ListeSalle.vue";
 import ListeArtiste from "./components/ListeArtiste.vue";
 
+import insertArtiste from "./components/insertArtiste.vue";
+
 </script>
 
 <script>
@@ -11,7 +13,7 @@ export default {
 	
 	data() {
 		return {
-			currentPage: 1,
+			currentPage: 3,
 			isAdmin: localStorage.getItem('isAdmin') === 'true' ? true : false,
 		};
 	},
@@ -26,7 +28,7 @@ export default {
 
 <template>
 	<header>
-		<Header :page="1" @response="(msg) => currentPage = msg" />
+		<Header :page="3" @response="(msg) => currentPage = msg" />
 	</header>
 
 	<main>
@@ -35,6 +37,9 @@ export default {
 		</div>
 		<div v-if="currentPage == 2">
 			<ListeArtiste />
+		</div>
+		<div v-if="currentPage == 3">
+			<insertArtiste />
 		</div>
 	</main>
 
