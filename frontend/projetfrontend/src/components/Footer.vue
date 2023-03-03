@@ -11,6 +11,8 @@ export default {
         toggleAdmin() {
             this.isAdmin = !this.isAdmin;
             localStorage.setItem('isAdmin', this.isAdmin);
+            // refresh page
+            window.location.reload();
         },
         checkLogin() {
             if(this.username == "admin" && this.password == "admin") {

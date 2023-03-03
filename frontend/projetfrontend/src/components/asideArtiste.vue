@@ -13,6 +13,7 @@ export default {
 			idA: parseInt(this.idArtiste),
 			artiste: null,
 			concerts: null,
+			groupes: null,
 			imgOrArticle: null,
 			imgSalle: [],
 			imgConcert: [],
@@ -32,6 +33,11 @@ export default {
 			.then((response) => response.json())
 			.then((json) => { this.imgOrArticle = json; });
 			// .then(() => console.log(this.imgOrArticle))
+
+		fetch("http://localhost:8082/Servlet_war_exploded/getAllGroupe")
+			.then((response) => response.json())
+			.then((json) => { this.groupes = json; });
+			// .then(() => console.log(this.groupes))
 	},
 	methods: {
 		getDateConcert(id) {
@@ -65,7 +71,11 @@ export default {
 				}
 			}
 			console.log(this.imgSalle);
-		}
+		},
+		getNomGroupe(id) {
+			let g = this.groupes.find(groupe => groupe.id == id);
+			return g.nom;
+		},
 
 
 	}
@@ -97,6 +107,13 @@ export default {
 
 		<div class="modaleConcert">
 		<img v-for="img in imgConcert" :src="img.Url"/>
+		</div>
+
+		<h2>Appartient au(x) groupe(s)</h2>
+		<div class="listeGroupes">
+			<div v-for="groupe in artiste.groupeSet" :key="groupe.id">
+				{{ getNomGroupe(groupe.id) }}
+			</div>
 		</div>
 		
 	</div>

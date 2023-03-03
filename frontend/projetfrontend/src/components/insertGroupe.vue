@@ -1,23 +1,15 @@
 <template>
-    <h1>Ajouter un artiste</h1>
+    <h1>Ajouter un groupe</h1>
   
     <form id="myForm">
       <label for="nom">Nom</label>
       <input type="text" name="nom" id="nom" required><br/>
-      <label for="prenom">Prénom</label>
-      <input type="text" name="prenom" id="prenom" required><br/>
-      <label for="pseudo">Pseudo</label>
-      <input type="text" name="pseudo" id="pseudo" required><br/>
-      <label for="ville">Ville</label>
-      <input type="text" name="ville" id="ville" required><br/>
-      <label for="age">Age</label>
-      <input type="number" name="age" id="age" required><br/>
   
       <input type="submit" value="Ajouter">
     </form>
   
     <div id="successMessage" style="display:none;color: green;">
-      Artiste ajouté avec succès !
+      Groupe ajouté avec succès !
     </div>
 
   </template>
@@ -38,7 +30,7 @@
         // On envoie une requête AJAX pour soumettre le formulaire
         $.ajax({
           type: 'POST',
-          url: 'http://localhost:8082/Servlet_war_exploded/insertArtiste',
+          url: 'http://localhost:8082/Servlet_war_exploded/insertGroupe',
           data: formData,
           success: function(response) {
             // On cache le formulaire et on affiche le message de succès

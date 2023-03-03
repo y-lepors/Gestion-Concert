@@ -3,7 +3,7 @@ import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import ListeSalle from "./components/ListeSalle.vue";
 import ListeArtiste from "./components/ListeArtiste.vue";
-
+import insertGroupe from "./components/insertGroupe.vue";
 import insertArtiste from "./components/insertArtiste.vue";
 
 </script>
@@ -13,7 +13,7 @@ export default {
 	
 	data() {
 		return {
-			currentPage: 3,
+			currentPage: 1,
 			isAdmin: localStorage.getItem('isAdmin') === 'true' ? true : false,
 		};
 	},
@@ -28,7 +28,7 @@ export default {
 
 <template>
 	<header>
-		<Header :page="3" @response="(msg) => currentPage = msg" />
+		<Header :page="1" @response="(msg) => currentPage = msg" />
 	</header>
 
 	<main>
@@ -39,7 +39,8 @@ export default {
 			<ListeArtiste />
 		</div>
 		<div v-if="currentPage == 3">
-			<insertArtiste />
+			<!-- <insertArtiste /> -->
+			<insertGroupe/>
 		</div>
 	</main>
 
