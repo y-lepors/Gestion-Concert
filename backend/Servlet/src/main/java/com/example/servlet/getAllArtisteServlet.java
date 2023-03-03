@@ -55,6 +55,7 @@ public class getAllArtisteServlet extends HttpServlet {
             for (data.Groupe g : a.getGroupeSet()) {
                 JSONObject objGroupe = new JSONObject();
                 objGroupe.put("id", g.getIdGroupe());
+                objGroupe.put("nom", g.getNom());
                 jsonArrayGroupe.put(objGroupe);
             }
 
