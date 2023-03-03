@@ -21,11 +21,11 @@ public class SalleController {
         List<SalleDTO> salles = salleService.getAllSalles();
         if (salles.isEmpty()) {
             return ResponseEntity.noContent()
-                    .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                    .header("Access-Control-Allow-Origin", "http://localhost:5173")
                     .build();
         }
         return ResponseEntity.ok()
-                .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                .header("Access-Control-Allow-Origin", "http://localhost:5173")
                 .body(salles);
     }
 
@@ -34,11 +34,11 @@ public class SalleController {
         SalleDTO salle = salleService.getSalleById(id);
         if (salle == null) {
             return ResponseEntity.noContent()
-                    .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                    .header("Access-Control-Allow-Origin", "http://localhost:5173")
                     .build();
         }
         return ResponseEntity.ok()
-                .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                .header("Access-Control-Allow-Origin", "http://localhost:5173")
                 .body(salle);
     }
 
@@ -47,11 +47,11 @@ public class SalleController {
         SalleDTO salle = salleService.saveSalle(salleDTO);
         if (salle == null) {
             return ResponseEntity.noContent()
-                    .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                    .header("Access-Control-Allow-Origin", "http://localhost:5173")
                     .build();
         }
         return ResponseEntity.ok()
-                .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                .header("Access-Control-Allow-Origin", "http://localhost:5173")
                 .body(salle);
     }
 
@@ -60,11 +60,11 @@ public class SalleController {
         Boolean isDeleted = salleService.deleteSalle(id);
         if (!isDeleted) {
             return ResponseEntity.noContent()
-                    .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                    .header("Access-Control-Allow-Origin", "http://localhost:5173")
                     .build();
         }
         return ResponseEntity.ok()
-                .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                .header("Access-Control-Allow-Origin", "http://localhost:5173")
                 .body(isDeleted);
     }
 
@@ -73,11 +73,11 @@ public class SalleController {
         SalleDTO salle = salleService.updateSalle(salleDTO);
         if (salle == null) {
             return ResponseEntity.noContent()
-                    .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                    .header("Access-Control-Allow-Origin", "http://localhost:5173")
                     .build();
         }
         return ResponseEntity.ok()
-                .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                .header("Access-Control-Allow-Origin", "http://localhost:5173")
                 .body(salle);
     }
 }

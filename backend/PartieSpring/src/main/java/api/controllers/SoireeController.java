@@ -21,11 +21,11 @@ public class SoireeController {
 		List<SoireeDTO> soirees = soireeService.getAllSoirees();
 		if (soirees.isEmpty()) {
 			return ResponseEntity.noContent()
-					.header("Access-Control-Allow-Origin", "http://localhost:8080")
+					.header("Access-Control-Allow-Origin", "http://localhost:5173")
 					.build();
 		}
 		return ResponseEntity.ok()
-				.header("Access-Control-Allow-Origin", "http://localhost:8080")
+				.header("Access-Control-Allow-Origin", "http://localhost:5173")
 				.body(soirees);
 	}
 
@@ -34,11 +34,11 @@ public class SoireeController {
 		SoireeDTO soiree = soireeService.getSoireeById(id);
 		if (soiree == null) {
 			return ResponseEntity.noContent()
-					.header("Access-Control-Allow-Origin", "http://localhost:8080")
+					.header("Access-Control-Allow-Origin", "http://localhost:5173")
 					.build();
 		}
 		return ResponseEntity.ok()
-				.header("Access-Control-Allow-Origin", "http://localhost:8080")
+				.header("Access-Control-Allow-Origin", "http://localhost:5173")
 				.body(soiree);
 	}
 
@@ -47,11 +47,11 @@ public class SoireeController {
 		SoireeDTO soiree = soireeService.saveSoiree(soireeDTO);
 		if (soiree == null) {
 			return ResponseEntity.noContent()
-					.header("Access-Control-Allow-Origin", "http://localhost:8080")
+					.header("Access-Control-Allow-Origin", "http://localhost:5173")
 					.build();
 		}
 		return ResponseEntity.ok()
-				.header("Access-Control-Allow-Origin", "http://localhost:8080")
+				.header("Access-Control-Allow-Origin", "http://localhost:5173")
 				.body(soiree);
 	}
 
@@ -60,11 +60,11 @@ public class SoireeController {
 		Boolean deleted = soireeService.deleteSoiree(id);
 		if (!deleted) {
 			return ResponseEntity.noContent()
-					.header("Access-Control-Allow-Origin", "http://localhost:8080")
+					.header("Access-Control-Allow-Origin", "http://localhost:5173")
 					.build();
 		}
 		return ResponseEntity.ok()
-				.header("Access-Control-Allow-Origin", "http://localhost:8080")
+				.header("Access-Control-Allow-Origin", "http://localhost:5173")
 				.body(deleted);
 	}
 
@@ -73,11 +73,11 @@ public class SoireeController {
 		SoireeDTO soiree = soireeService.updateSoiree(soireeDTO);
 		if (soiree == null) {
 			return ResponseEntity.noContent()
-					.header("Access-Control-Allow-Origin", "http://localhost:8080")
+					.header("Access-Control-Allow-Origin", "http://localhost:5173")
 					.build();
 		}
 		return ResponseEntity.ok()
-				.header("Access-Control-Allow-Origin", "http://localhost:8080")
+				.header("Access-Control-Allow-Origin", "http://localhost:5173")
 				.body(soiree);
 	}
 }

@@ -22,11 +22,11 @@ public class ConcertController {
         List<ConcertDTO> concerts = concertService.getAllConcerts();
         if (concerts.isEmpty()) {
             return ResponseEntity.noContent()
-                    .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                    .header("Access-Control-Allow-Origin", "http://localhost:5173")
                     .build();
         }
         return ResponseEntity.ok()
-                .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                .header("Access-Control-Allow-Origin", "http://localhost:5173")
                 .body(concerts);
     }
 
@@ -35,11 +35,11 @@ public class ConcertController {
         ConcertDTO concert = concertService.getConcertById(id);
         if (concert == null) {
             return ResponseEntity.noContent()
-                    .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                    .header("Access-Control-Allow-Origin", "http://localhost:5173")
                     .build();
         }
         return ResponseEntity.ok()
-                .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                .header("Access-Control-Allow-Origin", "http://localhost:5173")
                 .body(concert);
     }
 
@@ -48,11 +48,11 @@ public class ConcertController {
         ConcertDTO concert = concertService.saveConcert(concertDTO);
         if (concert == null) {
             return ResponseEntity.noContent()
-                    .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                    .header("Access-Control-Allow-Origin", "http://localhost:5173")
                     .build();
         }
         return ResponseEntity.ok()
-                .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                .header("Access-Control-Allow-Origin", "http://localhost:5173")
                 .body(concert);
     }
 
@@ -61,11 +61,11 @@ public class ConcertController {
         Boolean deleted = concertService.deleteConcert(id);
         if (!deleted) {
             return ResponseEntity.noContent()
-                    .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                    .header("Access-Control-Allow-Origin", "http://localhost:5173")
                     .build();
         }
         return ResponseEntity.ok()
-                .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                .header("Access-Control-Allow-Origin", "http://localhost:5173")
                 .body(deleted);
     }
 
@@ -74,11 +74,11 @@ public class ConcertController {
         ConcertDTO concert = concertService.updateConcert(concertDTO);
         if (concert == null) {
             return ResponseEntity.noContent()
-                    .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                    .header("Access-Control-Allow-Origin", "http://localhost:5173")
                     .build();
         }
         return ResponseEntity.ok()
-                .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                .header("Access-Control-Allow-Origin", "http://localhost:5173")
                 .body(concert);
     }
 }

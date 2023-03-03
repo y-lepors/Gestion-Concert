@@ -21,11 +21,11 @@ public class GestionnaireController {
         List<GestionnaireDTO> gestionnaires = gestionnaireService.getAllGestionnaires();
         if (gestionnaires.isEmpty()) {
             return ResponseEntity.noContent()
-                    .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                    .header("Access-Control-Allow-Origin", "http://localhost:5173")
                     .build();
         }
         return ResponseEntity.ok()
-                .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                .header("Access-Control-Allow-Origin", "http://localhost:5173")
                 .body(gestionnaires);
     }
 
@@ -34,11 +34,11 @@ public class GestionnaireController {
         GestionnaireDTO gestionnaire = gestionnaireService.getGestionnaireById(id);
         if (gestionnaire == null) {
             return ResponseEntity.noContent()
-                    .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                    .header("Access-Control-Allow-Origin", "http://localhost:5173")
                     .build();
         }
         return ResponseEntity.ok()
-                .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                .header("Access-Control-Allow-Origin", "http://localhost:5173")
                 .body(gestionnaire);
     }
 
@@ -47,11 +47,11 @@ public class GestionnaireController {
         GestionnaireDTO gestionnaire = gestionnaireService.saveGestionnaire(gestionnaireDTO);
         if (gestionnaire == null) {
             return ResponseEntity.noContent()
-                    .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                    .header("Access-Control-Allow-Origin", "http://localhost:5173")
                     .build();
         }
         return ResponseEntity.ok()
-                .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                .header("Access-Control-Allow-Origin", "http://localhost:5173")
                 .body(gestionnaire);
     }
 
@@ -60,11 +60,11 @@ public class GestionnaireController {
         Boolean deleted = gestionnaireService.deleteGestionnaire(id);
         if (!deleted) {
             return ResponseEntity.noContent()
-                    .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                    .header("Access-Control-Allow-Origin", "http://localhost:5173")
                     .build();
         }
         return ResponseEntity.ok()
-                .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                .header("Access-Control-Allow-Origin", "http://localhost:5173")
                 .body(deleted);
     }
 
@@ -73,11 +73,11 @@ public class GestionnaireController {
         GestionnaireDTO gestionnaire = gestionnaireService.updateGestionnaire(gestionnaireDTO);
         if (gestionnaire == null) {
             return ResponseEntity.noContent()
-                    .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                    .header("Access-Control-Allow-Origin", "http://localhost:5173")
                     .build();
         }
         return ResponseEntity.ok()
-                .header("Access-Control-Allow-Origin", "http://localhost:8080")
+                .header("Access-Control-Allow-Origin", "http://localhost:5173")
                 .body(gestionnaire);
     }
 }
