@@ -6,6 +6,7 @@ export default {
 	data() {
 		return {
 			currentPage: parseInt(this.page),
+			isAdmin: localStorage.getItem('isAdmin') === 'true' ? true : false,
 		};
 	},
 	methods: {
@@ -26,6 +27,7 @@ export default {
 	<div class="header">
 		<div @click="setPage(1)">Salles de concert</div>
 		<div @click="setPage(2)">Artistes</div>
+		<div v-if="isAdmin" @click="setPage(3)">Admin</div>
 	</div>
 
 </template>

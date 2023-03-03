@@ -3,6 +3,8 @@ import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import ListeSalle from "./components/ListeSalle.vue";
 import ListeArtiste from "./components/ListeArtiste.vue";
+import insertGroupe from "./components/insertGroupe.vue";
+import insertArtiste from "./components/insertArtiste.vue";
 
 </script>
 
@@ -35,6 +37,10 @@ export default {
 		</div>
 		<div v-if="currentPage == 2">
 			<ListeArtiste />
+		</div>
+		<div v-if="currentPage == 3">
+			<!-- <insertArtiste /> -->
+			<insertGroupe/>
 		</div>
 	</main>
 
