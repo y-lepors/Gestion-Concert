@@ -62,9 +62,20 @@ footer{
     margin: 1vh;
 }
 
-.listeConcerts{
-    background-color: red;
-    width: 100%;
+.concert{
+    margin: 1vh;
+    margin-top: 2vh;
+    padding: 0.5vh;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.concertFutur{
+    background-color: #7b9c7b;
+}
+
+.concertPasse{
+    background-color: rgb(177, 126, 126);
 }
 
 .loginModal{

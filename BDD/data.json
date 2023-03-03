@@ -1,20 +1,22 @@
-[{
-    "url" : "www.example.com",
-    "type" : "Image or Article",
-    "date" : "DD/MM/YYYY",
-    "auteur" : "Auteur",
-    "titre" : "Titre",
-    "lier" : {
-        "concert" : [
-            "Concert 1",
-            "Concert 2"
-        ],
-        "artiste" : [
-            "Artiste 1",
-            "Artiste 2"
-        ],
-        "groupe" : [],
-        "soiree" : [],
-        "salle" : []
+[
+    {
+        "url" : "www.example.com",
+        "type" : "Image or Article",
+        "date" : "DD/MM/YYYY",
+        "auteur" : "Auteur",
+        "titre" : "Titre",
+        "lier" : {
+            "concert" : [
+                "Concert 1",
+                "Concert 2"
+            ],
+            "artiste" : [
+                "Artiste 1",
+                "Artiste 2"
+            ],
+            "groupe" : [],
+            "soiree" : [],
+            "salle" : []
+        }
     }
-}]
+]

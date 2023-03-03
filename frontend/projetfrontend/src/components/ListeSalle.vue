@@ -8,23 +8,6 @@ export default {
 	data() {
 		return {
 			currentSalleID: -1,
-			// salles: [
-			// 	{ id: 1, nomSalle: "salle1" },
-			// 	{ id: 2, nomSalle: "salle2" },
-			// 	{ id: 3, nomSalle: "salle3" },
-			// 	{ id: 4, nomSalle: "salle4" },
-			// 	{ id: 5, nomSalle: "salle5" },
-			// 	{ id: 6, nomSalle: "salle6" },
-			// 	{ id: 7, nomSalle: "salle7" },
-			// 	{ id: 8, nomSalle: "salle8" },
-			// 	{ id: 9, nomSalle: "salle9" },
-			// 	{ id: 10, nomSalle: "test1" },
-			// 	{ id: 11, nomSalle: "test1" },
-			// 	{ id: 12, nomSalle: "test1" },
-			// 	{ id: 13, nomSalle: "test1" },
-			// 	{ id: 14, nomSalle: "test1" },
-			// 	{ id: 15, nomSalle: "test1" },
-			// ],
 			salles: [],
 		};
 	},

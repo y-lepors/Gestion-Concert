@@ -1,0 +1,40 @@
+GET localhost:8080/salles/1
+
+###
+
+GET localhost:8080/salles
+
+###
+
+GET localhost:8080/concerts/1
+
+###
+
+POST localhost:8080/concerts
+Content-Type: application/json
+
+{
+  "dateConcert": "2019-01-01",
+  "duree": 2,
+  "soiree": {
+    "idSoiree": 1
+  },
+  "salle": {
+    "idSalle": 1
+  }
+}
+
+###
+
+GET localhost:8080/gestionnaires
+
+###
+
+POST localhost:8080/gestionnaires/update
+Content-Type: application/json
+
+{
+  "idGestionnaire": 6,
+  "nom": "Martin",
+  "president": "non"
+}

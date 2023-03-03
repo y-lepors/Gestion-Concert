@@ -29,5 +29,7 @@ public class Concert {
 	@JoinColumn(name = "id_salle")
 	@JsonBackReference(value = "salle-concert")
 	private Salle salle;
+
+	private Long nbPlaces;
 }
 

@@ -32,6 +32,8 @@ public class Concert implements Serializable {
     private Date dateConcert;
     @Column(name = "duree")
     private Integer duree;
+    @Column(name = "nb_places")
+    private Integer nbPlaces;
     @JoinColumn(name = "id_artiste", referencedColumnName = "id_artiste")
     @ManyToOne
     private Artiste idArtiste;
@@ -74,6 +76,14 @@ public class Concert implements Serializable {
 
     public void setDuree(Integer duree) {
         this.duree = duree;
+    }
+
+    public Integer getNbPlaces() {
+        return nbPlaces;
+    }
+
+    public void setNbPlaces(Integer nbPlaces) {
+        this.nbPlaces = nbPlaces;
     }
 
     public Artiste getIdArtiste() {

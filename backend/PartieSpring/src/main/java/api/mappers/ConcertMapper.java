@@ -18,6 +18,7 @@ public class ConcertMapper {
         concertDTO.setDuree(concert.getDuree());
         concertDTO.setSoiree(concert.getSoiree());
         concertDTO.setSalle(concert.getSalle());
+        concertDTO.setNbPlaces(concert.getNbPlaces());
         return concertDTO;
     }
 
@@ -28,6 +29,7 @@ public class ConcertMapper {
         concert.setDuree(concertDTO.getDuree());
         concert.setSoiree(concertDTO.getSoiree());
         concert.setSalle(concertDTO.getSalle());
+        concert.setNbPlaces(concertDTO.getNbPlaces());
         return concert;
     }
 }
