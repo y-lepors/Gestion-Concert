@@ -55,6 +55,16 @@ public class getAllGroupeServlet extends HttpServlet {
 
                 obj.put("artisteSet", jsonArrayArtiste);
 
+                // Ajoute le SetConcert dans le JSON
+                JSONArray jsonArrayConcert = new JSONArray();
+                for (data.Concert c : g.getConcertSet()) {
+                    JSONObject objConcert = new JSONObject();
+                    objConcert.put("id", c.getIdConcert());
+                    jsonArrayConcert.put(objConcert);
+                }
+
+                obj.put("concertSet", jsonArrayConcert);
+
 
                 jsonArray.put(obj);
             }
