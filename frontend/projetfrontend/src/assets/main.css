@@ -78,7 +78,12 @@ footer{
     background-color: rgb(177, 126, 126);
 }
 
-.loginModal{
+img{
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.loginModal, .modaleConcert{
     z-index: 2;
     display: none;
     position: fixed;
@@ -90,9 +95,15 @@ footer{
     transform: translate(-50%, -50%);
 }
 
+.modaleConcert{
+    width: auto;
+    height: auto;
+}
+
 .hideModal{
     display: flex !important;
 }
+
 
 .voileNoir{
     display: none;

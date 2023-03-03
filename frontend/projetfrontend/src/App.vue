@@ -11,7 +11,7 @@ export default {
 	
 	data() {
 		return {
-			currentPage: 2,
+			currentPage: 1,
 			isAdmin: localStorage.getItem('isAdmin') === 'true' ? true : false,
 		};
 	},
