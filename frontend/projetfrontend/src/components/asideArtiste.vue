@@ -1,3 +1,7 @@
+<script setup>
+	import Concert from "/src/components/Concert.vue";
+</script>
+
 <script>
 export default {
 	props: {
@@ -9,6 +13,9 @@ export default {
 			idA: parseInt(this.idArtiste),
 			artiste: null,
 			concerts: null,
+			imgOrArticle: null,
+			imgSalle: [],
+			imgConcert: [],
 		};
 	},
 	created() {
@@ -20,12 +27,46 @@ export default {
 		fetch("http://localhost:8080/concerts/")
 			.then((response) => response.json())
 			.then((json) => { this.concerts = json; });
+
+		fetch("http://localhost:8082/Servlet_war_exploded/getImgOrArticle")
+			.then((response) => response.json())
+			.then((json) => { this.imgOrArticle = json; });
+			// .then(() => console.log(this.imgOrArticle))
 	},
 	methods: {
 		getDateConcert(id) {
 			let c = this.concerts.find(concert => concert.idConcert == id);
 			return c.dateConcert;
+		},
+		openModale(id){
+			this.setImgConcert(id);
+			document.getElementsByClassName("modaleConcert")[0].classList.toggle("hideModal");
+			console.log("open modale concert "+id);
+		},
+		getCapacite(id) {
+			let c = this.concerts.find(concert => concert.idConcert == id);
+			console.log(c);
+			return c.salle.capacite;
+		},
+		setImgConcert(idConcert){
+			this.imgConcert = [];
+			for(let i = 0; i < this.imgOrArticle.length; i++){
+				if(this.imgOrArticle[i].Lier.Concert.indexOf(idConcert.toString()) !=-1){
+					this.imgConcert.push(this.imgOrArticle[i]);
+				}
+			}
+			console.log(this.imgConcert);
+		},
+		setImgSalle(idSal) {
+			this.imgSalle = [];
+			for(let i = 0; i < this.imgOrArticle.length; i++){
+				if(this.imgOrArticle[i].Lier.Salle.indexOf(idSal.toString()) !=-1){
+					this.imgSalle.push(this.imgOrArticle[i]);
+				}
+			}
+			console.log(this.imgSalle);
 		}
+
 
 	}
 };
@@ -46,13 +87,17 @@ export default {
 		<div class="listeConcerts">
 
 			<!-- Affiche tout les concert lié à un id de artiste.concertSet.id trouver dans le fetch concerts -->
-
-
-
 			<div v-for="concert in artiste.concertSet" :key="concert.id">
-				<p>Date de concert : {{ getDateConcert(concert.id) }} </p>
+				
+				<Concert :idConcert="concert.id" :capacite="getCapacite(concert.id)" @click="openModale(concert.id)"/>
 			</div>
+
+			
 		</div>	
+
+		<div class="modaleConcert">
+		<img v-for="img in imgConcert" :src="img.Url"/>
+		</div>
 		
 	</div>
 </template>

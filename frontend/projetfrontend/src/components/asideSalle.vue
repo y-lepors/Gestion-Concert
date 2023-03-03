@@ -21,15 +21,6 @@ export default {
 		};
 	},
 	methods: {
-		setImgSalle(idSal) {
-			this.imgSalle = [];
-			for(let i = 0; i < this.imgOrArticle.length; i++){
-				if(this.imgOrArticle[i].Lier.Salle.indexOf(idSal.toString()) !=-1){
-					this.imgSalle.push(this.imgOrArticle[i]);
-				}
-			}
-			console.log(this.imgSalle);
-		},
 		setImgConcert(idConcert){
 			this.imgConcert = [];
 			for(let i = 0; i < this.imgOrArticle.length; i++){
