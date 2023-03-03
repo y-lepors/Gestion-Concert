@@ -14,5 +14,6 @@ public class ConcertDTO {
 	private Long duree;
 	private Soiree soiree;
 	private Salle salle;
+	private Long nbPlaces;
 }
 

@@ -67,6 +67,7 @@ public class ConcertService {
         concert.setDuree(concertDTO.getDuree());
         concert.setSalle(concertDTO.getSalle());
         concert.setSoiree(concertDTO.getSoiree());
+        concert.setNbPlaces(concertDTO.getNbPlaces());
         concertRepository.save(concert);
         return concertMapper.toDTO(concert);
     }

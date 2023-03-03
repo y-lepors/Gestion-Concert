@@ -1,8 +1,6 @@
 <script setup>
-
 import Artiste from "/src/components/Artiste.vue";
 import AsideArtiste from "/src/components/AsideArtiste.vue";
-
 </script>
 
 <script>

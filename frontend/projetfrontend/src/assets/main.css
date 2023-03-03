@@ -62,12 +62,28 @@ footer{
     margin: 1vh;
 }
 
-.listeConcerts{
-    background-color: red;
-    width: 100%;
+.concert{
+    margin: 1vh;
+    margin-top: 2vh;
+    padding: 0.5vh;
+    cursor: pointer;
+    border: 1px solid black;
 }
 
-.loginModal{
+.concertFutur{
+    background-color: #7b9c7b;
+}
+
+.concertPasse{
+    background-color: rgb(177, 126, 126);
+}
+
+img{
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.loginModal, .modaleConcert{
     z-index: 2;
     display: none;
     position: fixed;
@@ -79,9 +95,15 @@ footer{
     transform: translate(-50%, -50%);
 }
 
+.modaleConcert{
+    width: auto;
+    height: auto;
+}
+
 .hideModal{
     display: flex !important;
 }
+
 
 .voileNoir{
     display: none;
