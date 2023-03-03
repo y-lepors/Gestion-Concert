@@ -19,7 +19,6 @@ export default {
 		updateAdmin() {
 			this.isAdmin = localStorage.getItem('isAdmin') === 'true' ? true : false;
 		},
-		
 	},
 }
 </script>
